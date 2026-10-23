@@ -19,7 +19,7 @@ export type Comparison = {
 
 export const comparisons: Comparison[] = [
   {
-    slug: "veilbox-vs-apple-hidden-album",
+    slug: "privateroll-vs-apple-hidden-album",
     competitor: "Apple Hidden Album",
     kind: "Built-in",
     reviewed: null,
@@ -28,12 +28,13 @@ export const comparisons: Comparison[] = [
     rows: [
       { label: "Separate secret from your phone passcode", us: "yes", them: "no" },
       { label: "Files encrypted by the app itself", us: "yes", them: "partial" },
-      { label: "Decoy or deniable vaults", us: "yes", them: "no" },
+      { label: "Decoy vaults", us: "yes", them: "no" },
       { label: "Kept out of Photos search, Memories and widgets", us: "yes", them: "partial" },
       { label: "Built-in camera that skips the camera roll", us: "yes", them: "no" },
       { label: "Stores documents and any file type", us: "yes", them: "no" },
+      { label: "Copies on your other devices", us: "Never", them: "With iCloud Photos" },
       { label: "Already installed", us: "no", them: "yes" },
-      { label: "Price", us: "Free, optional Pro", them: "Free" },
+      { label: "Price", us: "Free", them: "Free" },
     ],
     chooseThem: [
       "Nobody else knows your iPhone passcode.",
@@ -50,13 +51,13 @@ export const comparisons: Comparison[] = [
 
 The Hidden album is locked with Face ID or your device passcode. That's a reasonable default, but it means anyone who knows your passcode, or can watch you enter it, can open the album. For many people that's exactly the person they want to keep out.
 
-Veilbox uses a separate pattern that has nothing to do with your phone's lock. Knowing the passcode gets someone onto your home screen, and that's all.
+PrivateRoll uses a separate pattern that has nothing to do with your phone's lock. Knowing the passcode gets someone onto your home screen, and that's all.
 
 ## Where your photos actually live
 
 Hidden photos are still part of your Photos library. They sync through iCloud Photos to every device on the account, including a shared family iPad or Mac. Unless Advanced Data Protection is turned on, iCloud Photos uses Apple's standard data protection, which means Apple holds the encryption keys.
 
-Veilbox files are encrypted on your device with a key only your pattern can produce, whether or not you use our [encrypted backup](/features/encrypted-backup).
+PrivateRoll files are encrypted on your device with a key only your pattern can produce, and they never leave that device.
 
 ## The honest take
 
@@ -64,72 +65,73 @@ If your main concern is a stranger scrolling past a photo, the Hidden album may 
 `,
   },
   {
-    slug: "veilbox-vs-keepsafe",
+    slug: "privateroll-vs-keepsafe",
     competitor: "Keepsafe",
     kind: "App",
     reviewed: null,
     summary: "Keepsafe is one of the best-known photo vaults. Here's how its account-based approach compares with a no-account design.",
-    lede: "Keepsafe has been around for years and has a lot of users. The two apps take different routes: Keepsafe builds around an account and its own cloud, while Veilbox builds around a key only you hold.",
+    lede: "Keepsafe has been around for years and has a lot of users. The two apps take different routes: Keepsafe builds around an account and its own cloud, while PrivateRoll builds around a key only you hold.",
     rows: [
       { label: "Works without an account or email", us: "yes", them: "Check current listing" },
       { label: "Key derived from your secret (zero-knowledge)", us: "yes", them: "Check current listing" },
       { label: "Decoy vault", us: "yes", them: "Premium feature" },
-      { label: "Panic erase", us: "yes", them: "Check current listing" },
-      { label: "Encrypted cloud backup", us: "iCloud, end-to-end", them: "Own cloud service" },
+      { label: "Duress erase", us: "yes", them: "Check current listing" },
+      { label: "Cloud backup", us: "No, device only", them: "Own cloud service" },
       { label: "Ads in free tier", us: "no", them: "Check current listing" },
-      { label: "Price", us: "Free, optional Pro", them: "Free, Premium subscription" },
+      { label: "Price", us: "Free", them: "Free, Premium subscription" },
     ],
     chooseThem: [
       "You want an account you can recover by email.",
+      "You want your vault backed up to the company's cloud.",
       "You already have years of photos stored in their cloud.",
     ],
     chooseUs: [
       "You don't want an email address tied to your private photos.",
-      "You want recovery to depend on a phrase you hold, not a support ticket.",
-      "You want a vault that gives no sign of whether hidden vaults exist.",
+      "You'd rather nobody, including the developer, had a way into your vault.",
+      "You want separate vaults that the app never lists.",
     ],
     body: `
 ## Accounts vs. keys
 
-An account-based vault can reset your access if you forget your PIN. That's convenient, and it also means the service has some route back into your vault. A zero-knowledge design like Veilbox can't do that. If you forget your pattern and lose your [recovery phrase](/features/recovery-phrase), nobody can help, but nobody else can get in either.
+An account-based vault can reset your access if you forget your PIN. That's convenient, and it also means the service has some route back into your vault. A zero-knowledge design like PrivateRoll can't do that. If you forget your pattern, nobody can help, but nobody else can get in either.
 
 ## Which trade-off is right for you?
 
-Neither approach is wrong. If losing access is your biggest fear, an account with email recovery may suit you. If someone getting access is your biggest fear, a key only you hold is the stronger choice.
+Neither approach is wrong. If losing access is your biggest fear, an account with email recovery and a cloud copy may suit you. If someone getting access is your biggest fear, a key only you hold is the stronger choice.
 
 ## Switching
 
-Export your photos from your current vault to the Files app, import them into Veilbox, and then delete the exported copies. Our guide on [moving between vault apps](/guides/move-photos-between-vault-apps) walks through each step without leaving copies behind.
+Export your photos from your current vault to the Files app, import them into PrivateRoll, and then delete the exported copies. Our guide on [moving between vault apps](/guides/move-photos-between-vault-apps) walks through each step without leaving copies behind.
 `,
   },
   {
-    slug: "veilbox-vs-private-photo-vault",
+    slug: "privateroll-vs-private-photo-vault",
     competitor: "Private Photo Vault",
     kind: "App",
     reviewed: null,
     summary: "A long-running vault app with decoy and break-in features. How does it compare on encryption and recovery?",
-    lede: "Private Photo Vault popularised features like decoy passwords and break-in reports. Here's how it compares with Veilbox's encryption-first design.",
+    lede: "Private Photo Vault popularised features like decoy passwords and break-in reports. Here's how it compares with PrivateRoll's encryption-first design.",
     rows: [
       { label: "Separate secret from your phone passcode", us: "yes", them: "yes" },
       { label: "Decoy vault", us: "yes", them: "yes" },
-      { label: "Unlimited deniable vaults", us: "yes", them: "Check current listing" },
+      { label: "Unlimited separate vaults", us: "yes", them: "Check current listing" },
       { label: "Key derived from your secret (zero-knowledge)", us: "yes", them: "Check current listing" },
       { label: "Built-in camera", us: "yes", them: "yes" },
       { label: "Break-in photo of intruder", us: "no", them: "yes" },
-      { label: "Price", us: "Free, optional Pro", them: "Free, Pro upgrade" },
+      { label: "Price", us: "Free", them: "Free, Pro upgrade" },
     ],
     chooseThem: [
       "You want an intruder photo when someone enters the wrong PIN.",
       "You're used to a PIN pad and prefer not to switch.",
     ],
     chooseUs: [
-      "You want any pattern to open a vault, so no attempt is ever visibly wrong.",
+      "You want each pattern to open its own vault, with none of them listed.",
       "You want a published encryption design you can read.",
     ],
     body: `
-## Why Veilbox doesn't take break-in photos
+## Why PrivateRoll doesn't take break-in photos
 
-Break-in photos are a popular feature, and we decided against it on purpose. An intruder photo only works if the app knows an attempt was "wrong," and that same knowledge is what reveals a hidden vault exists. Veilbox's [deniable design](/features/deniable-vaults) never treats an attempt as wrong, so there's nothing to report.
+Break-in photos are a popular feature, and we left it out on purpose. An intruder photo means the app turns on the camera without you and keeps a picture of whoever is holding your phone, which is one more sensitive file to look after. PrivateRoll answers wrong guesses differently: after a few patterns that open nothing, unlocking pauses, and the pause doubles each time, up to 15 minutes.
 
 ## What to compare yourself
 
@@ -137,18 +139,18 @@ Open each app's settings and look for answers to three questions. What happens i
 `,
   },
   {
-    slug: "veilbox-vs-calculator-vault-apps",
+    slug: "privateroll-vs-calculator-vault-apps",
     competitor: "Calculator Vault Apps",
     kind: "App category",
     reviewed: null,
     summary: "Apps that pose as a calculator. The disguise is clever, but what's behind it matters more.",
     lede: "Calculator vaults open when you type a code into what looks like a working calculator. It's a fun trick. The question is how well the files behind it are protected.",
     rows: [
-      { label: "Disguise as a utility", us: "Icon and name", them: "Working fake calculator" },
+      { label: "Disguise as a utility", us: "Icon only", them: "Working fake calculator" },
       { label: "Strong, documented encryption", us: "yes", them: "Varies widely" },
       { label: "No ads", us: "yes", them: "Often ad-supported" },
       { label: "No account required", us: "yes", them: "Varies" },
-      { label: "Deniable vaults", us: "yes", them: "Rare" },
+      { label: "Decoy vaults", us: "yes", them: "Rare" },
     ],
     chooseThem: ["The disguise matters more to you than how the files are encrypted."],
     chooseUs: [
@@ -166,11 +168,11 @@ A calculator disguise stops a casual glance. It won't stop someone who searches 
 - Is there an ad SDK? Ads mean third-party code running inside your vault.
 - What's the recovery process? Email resets mean the developer can get in.
 
-We wrote a full guide on [spotting a weak calculator vault](/guides/spot-a-weak-calculator-vault). If you like the disguise idea, Veilbox offers [utility-style icons](/features/disguised-icons) with real encryption behind them.
+We wrote a full guide on [spotting a weak calculator vault](/guides/spot-a-weak-calculator-vault). If you like the disguise idea, PrivateRoll offers [utility-style icons](/features/disguised-icons) with real encryption behind them.
 `,
   },
   {
-    slug: "veilbox-vs-google-photos-locked-folder",
+    slug: "privateroll-vs-google-photos-locked-folder",
     competitor: "Google Photos Locked Folder",
     kind: "Built-in",
     reviewed: null,
@@ -180,11 +182,14 @@ We wrote a full guide on [spotting a weak calculator vault](/guides/spot-a-weak-
       { label: "Separate secret from your phone lock", us: "yes", them: "no" },
       { label: "Encrypted with a key only you hold", us: "yes", them: "no" },
       { label: "Decoy vaults", us: "yes", them: "no" },
-      { label: "Optional cloud backup", us: "yes", them: "yes" },
+      { label: "Cloud backup", us: "No, device only", them: "yes" },
       { label: "Stores documents and other files", us: "yes", them: "no" },
-      { label: "Price", us: "Free, optional Pro", them: "Free" },
+      { label: "Price", us: "Free", them: "Free" },
     ],
-    chooseThem: ["Nobody else can unlock your phone, and you're already invested in Google Photos."],
+    chooseThem: [
+      "Nobody else can unlock your phone, and you're already invested in Google Photos.",
+      "You want the photos backed up to your Google account.",
+    ],
     chooseUs: ["You want a secret that's different from your phone lock, and encryption Google can't open."],
     body: `
 ## Same weak spot as the Hidden album
@@ -193,30 +198,30 @@ Locked Folder opens with your device's screen lock. Anyone who knows your passco
 
 ## Backup and keys
 
-When backup for Locked Folder is turned on, the photos are stored in your Google account. Google's general privacy protections apply, but the keys aren't held by you alone. Veilbox backups are encrypted on your iPhone before upload, using a key derived from your pattern.
+When backup for Locked Folder is turned on, the photos are stored in your Google account. Google's general privacy protections apply, but the keys aren't held by you alone. PrivateRoll doesn't upload anything: your vaults stay on your device, encrypted with a key derived from your pattern and a secret that never leaves the phone.
 `,
   },
   {
-    slug: "veilbox-vs-locked-notes",
+    slug: "privateroll-vs-locked-notes",
     competitor: "Locked Notes",
     kind: "Built-in",
     reviewed: null,
     summary: "Apple Notes can lock a note with a password. It works for a few images, but not for a real library.",
     lede: "Locked notes in Apple Notes are end-to-end encrypted and free. They're a good tool for text, and an awkward one for hundreds of photos.",
     rows: [
-      { label: "End-to-end encrypted", us: "yes", them: "yes" },
+      { label: "Encrypted with a key Apple can't read", us: "yes", them: "yes" },
       { label: "Separate secret from your phone passcode", us: "yes", them: "Optional" },
       { label: "Designed for large photo and video libraries", us: "yes", them: "no" },
-      { label: "Full-screen viewer and albums", us: "yes", them: "no" },
-      { label: "Deniable vaults", us: "yes", them: "no" },
-      { label: "Price", us: "Free, optional Pro", them: "Free" },
+      { label: "Full-screen viewer and folders", us: "yes", them: "no" },
+      { label: "Decoy vaults", us: "yes", them: "no" },
+      { label: "Price", us: "Free", them: "Free" },
     ],
     chooseThem: ["You only need to lock a handful of images alongside some text."],
     chooseUs: ["You have more than a few dozen photos or any videos, and want a proper gallery."],
     body: `
 ## Good for text, clumsy for photos
 
-Locked notes are a solid choice for codes, account details, and a couple of attached images. Past that, the cracks show: no albums, no smooth swiping, and large videos make notes slow. Notes can also use your device passcode as the lock, which brings back the [shared passcode problem](/compare/veilbox-vs-apple-hidden-album).
+Locked notes are a solid choice for codes, account details, and a couple of attached images. Past that, the cracks show: no folders of photos, no smooth swiping, and large videos make notes slow. Notes can also use your device passcode as the lock, which brings back the [shared passcode problem](/compare/privateroll-vs-apple-hidden-album).
 
 Read our full write-up: [Is a locked note safe enough?](/guides/is-a-locked-note-safe-enough).
 `,

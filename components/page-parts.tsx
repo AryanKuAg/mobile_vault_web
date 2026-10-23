@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AppStoreButton } from "@/components/app-store-button";
 import { Icon } from "@/components/icon";
-import { site } from "@/lib/site";
+import { getApp, site } from "@/lib/site";
 
 export function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-6xl px-4 sm:px-6 ${className}`}>{children}</div>;
@@ -9,8 +9,8 @@ export function Container({ children, className = "" }: { children: React.ReactN
 
 export function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
-    <p className="mb-4 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-highlight">
-      <span className="h-px w-6 bg-highlight" />
+    <p className="mb-4 inline-flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-faint">
+      <span className="h-[3px] w-6 rounded-full bg-accent" />
       {children}
     </p>
   );
@@ -61,6 +61,7 @@ export function PageHero({
 }) {
   return (
     <section className="relative overflow-hidden border-b border-line pb-16 pt-[128px] sm:pb-20">
+      <div className="hero-glow" />
       <div className="hero-grid" />
       <Container className="relative">
         {crumbs && <Breadcrumbs items={crumbs} />}
@@ -69,7 +70,7 @@ export function PageHero({
           {title}
         </h1>
         {lede && (
-          <p className="mt-6 max-w-2xl border-l-2 border-highlight pl-5 text-lg leading-relaxed text-pretty text-muted sm:text-xl">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-pretty text-muted sm:text-xl">
             {lede}
           </p>
         )}
@@ -81,29 +82,32 @@ export function PageHero({
 
 export function CtaBand({
   title = "Your photos deserve a lock that actually locks.",
-  body = `${site.name} is free to download. No account, no email, no tracking. Just a pattern only you know.`,
+  body = `${site.name} is free. No account, no email, no tracking. Just a pattern only you know.`,
 }: {
   title?: string;
   body?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-accent py-20 text-accent-ink">
-      <div className="hero-lines opacity-60">
-        <span />
-        <span />
-      </div>
+    <section className="lock-gradient relative overflow-hidden py-20">
+      <div className="hero-grid opacity-60" />
       <Container className="relative text-center">
         <h2 className="mx-auto max-w-3xl text-balance font-display text-[clamp(2rem,4.5vw,3.1rem)] font-bold leading-[1.02] tracking-[-0.03em]">
           {title}
         </h2>
-        <p className="mx-auto mt-5 max-w-xl text-lg opacity-85">{body}</p>
+        <p className="mx-auto mt-5 max-w-xl text-lg text-white/75">{body}</p>
         <div className="mt-9 flex justify-center">
-          <a
-            href={site.appStoreUrl}
-            className="btn !rounded-2xl bg-accent-ink !px-7 !py-4 font-display text-lg text-accent hover:-translate-y-0.5"
-          >
-            Download {site.name}
-          </a>
+          {getApp ? (
+            <a
+              href={getApp.href}
+              className="btn bg-[#4fe3c1] !px-7 !py-4 font-display text-lg text-[#0e1726] hover:-translate-y-0.5"
+            >
+              {getApp.short}
+            </a>
+          ) : (
+            <span className="btn cursor-default border border-white/15 bg-white/[0.06] !px-7 !py-4 font-display text-lg text-white">
+              Coming soon to the App Store
+            </span>
+          )}
         </div>
       </Container>
     </section>
@@ -165,7 +169,7 @@ export function InlineCta() {
     <div className="mt-14 flex flex-col items-start gap-5 rounded-3xl border border-line bg-surface p-7 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <p className="font-display text-xl font-bold">Try {site.name} free</p>
-        <p className="mt-1 text-muted">Encrypted on your iPhone. No account required.</p>
+        <p className="mt-1 text-muted">Encrypted on your iPhone or iPad. No account required.</p>
       </div>
       <AppStoreButton />
     </div>

@@ -21,8 +21,8 @@ const principles = [
   },
   {
     icon: "spark",
-    title: "Paid by users, not by ads",
-    body: `${site.name} Pro pays for development. There are no ad networks, no data brokers and no analytics SDKs watching what you do.`,
+    title: "No ads, no data brokers",
+    body: `${site.name} is free, and it has no ad networks, no data brokers and no analytics SDKs watching what you do.`,
   },
   {
     icon: "book",
@@ -36,8 +36,8 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title={<>A small team building <span className="text-accent">the vault we wanted.</span></>}
-        lede={`${site.name} is made by ${site.company}, an independent studio. We're not funded by advertisers, and we don't answer to anyone who wants your data.`}
+        title={<>Building <span className="text-accent">the vault we wanted.</span></>}
+        lede={`${site.name} is made independently. It isn't funded by advertisers, and it doesn't answer to anyone who wants your data.`}
         crumbs={[{ label: "About" }]}
       />
       <section className="py-20">

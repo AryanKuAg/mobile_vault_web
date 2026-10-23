@@ -57,7 +57,7 @@ A proper vault encrypts each file with a key derived from a secret that's separa
 | Someone glancing at your screen | Hidden album |
 | Your photos showing up in Memories | Hidden album |
 | A family member who knows your passcode | Encrypted vault |
-| Someone who might pressure you to unlock | Vault with [deniable vaults](/features/deniable-vaults) |
+| Someone who might pressure you to unlock | Vault with [decoy vaults](/features/decoy-vaults) |
 
 ## Don't forget the leftovers
 
@@ -93,7 +93,7 @@ For keeping a surprise gift idea away from a curious kid, that's often enough.
 
 ## What a vault adds
 
-A vault like Veilbox uses a separate secret (in our case, a [pattern](/features/pattern-key)) and encrypts files with a key derived from it. Knowing your phone passcode doesn't help. Copying your phone's backup doesn't help. And with [deniable vaults](/features/deniable-vaults), even being forced to open the app doesn't reveal everything.
+A vault like PrivateRoll uses a separate secret (in our case, a [pattern](/features/pattern-key)) and encrypts files with a key derived from it. Knowing your phone passcode doesn't help. Copying your phone's backup doesn't help. And with [decoy vaults](/features/decoy-vaults), even being forced to open the app doesn't reveal everything.
 
 ## A quick test
 
@@ -126,7 +126,7 @@ In a zero-knowledge setup, you buy the lock yourself and never hand over a copy 
 
 ## The trade-off: no "Forgot password?"
 
-If the company can't open your safe, it can't help you open it either. Lose your secret and your backup method, and the data is gone for good. That's why zero-knowledge apps usually give you a [recovery phrase](/features/recovery-phrase) at setup. Write it down.
+If the company can't open your safe, it can't help you open it either. Lose your secret and any backup method, and the data is gone for good. Some zero-knowledge apps hand you a recovery phrase to write down at setup. PrivateRoll doesn't, so your pattern is the only way in.
 
 ## How to tell if an app is really zero-knowledge
 
@@ -180,9 +180,9 @@ Face ID is excellent against strangers and terrible against anyone who can point
 - **Wipe your screen** now and then, since smudge trails are real.
 - Draw with your hand angled to cover the screen when others are near.
 
-## Why Veilbox uses a pattern anyway
+## Why PrivateRoll uses a pattern anyway
 
-A pattern is fast and easy to remember, and in Veilbox it's not compared against anything. It's turned straight into an encryption key ([how that works](/features/pattern-key)). Combined with [deniable vaults](/features/deniable-vaults), even coercion has limits: you can open a vault without revealing that others exist.
+A pattern is fast and easy to remember, and in PrivateRoll it's not compared against anything. It's turned straight into an encryption key ([how that works](/features/pattern-key)). Combined with [decoy vaults](/features/decoy-vaults), even coercion has limits: you can open a vault without revealing that others exist.
 `,
   },
   {
@@ -275,14 +275,14 @@ Moving between vault apps is the moment your private photos are most exposed: fo
 ## Step by step
 
 1. In your old vault, select a batch of items and export them to **Files → On My iPhone** in a new folder. Avoid exporting to Photos if you can.
-2. Open Veilbox and use **Import → Files**, then pick that folder.
+2. Open PrivateRoll, tap **+**, choose **Import Files**, and select the files in that folder.
 3. Wait for the import to finish. Spot-check a few photos and videos.
 4. Delete the folder from Files, then open **Files → Browse → Recently Deleted** and delete it from there too.
 5. Repeat in batches until done.
 
 ## If the old app can only export to Photos
 
-Export a batch, import it into Veilbox with **Delete originals after import** turned on, then empty **Photos → Recently Deleted**. Keep iCloud Photos paused until you've finished and emptied it.
+Export a batch and import it into PrivateRoll. When it offers to remove the originals, choose **Delete Originals**, then empty **Photos → Recently Deleted**. Keep iCloud Photos paused until you've finished and emptied it.
 
 ## Afterwards
 
@@ -324,7 +324,7 @@ You lose the "Places" map in Photos, but your photos no longer record where you 
 
 Location isn't the only metadata. Files can also include the device model, the exact time, and sometimes editing software details. Our [metadata tool](/tools/photo-metadata) shows everything and can export a clean copy.
 
-> Veilbox's [Vault Camera](/features/vault-camera) doesn't save location by default, and exports from Veilbox strip it automatically.
+> Photos taken with PrivateRoll's [Vault Camera](/features/vault-camera) are saved without location. Imported photos keep their original details, so check them with the tool above before you pass them on.
 `,
   },
   {
@@ -383,7 +383,7 @@ With **Standard Data Protection**, iCloud Photos is encrypted, but Apple holds t
 
 - On the shared device, turn off iCloud Photos or sign out of your Apple account.
 - Use **Settings → Photos → Use Face ID** on each device so the Hidden album stays locked.
-- For photos that should exist on only one device, store them in an encrypted vault and leave [backup](/features/encrypted-backup) off.
+- For photos that should exist on only one device, store them in an encrypted vault that never syncs. PrivateRoll [keeps each vault on one device](/features/security-architecture).
 
 ## Check your device list
 

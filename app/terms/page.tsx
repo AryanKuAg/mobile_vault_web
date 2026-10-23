@@ -9,21 +9,25 @@ const body = `
 
 By downloading or using ${site.name} you agree to these terms and to Apple's Licensed Application End User License Agreement. If you don't agree, please don't use the app.
 
-## Your responsibility for your keys
+## Your pattern is the only key
 
-${site.name} is built so that only you can open your vault. **We can't recover your pattern, your recovery phrase or your files.** You're responsible for remembering your pattern and keeping your recovery phrase safe. We aren't liable for data you can't access because of a lost pattern or phrase.
+${site.name} is built so that only you can open your vaults. **We can't recover your pattern or your files.** You're responsible for remembering your pattern. We aren't liable for data you can't access because a pattern was forgotten.
+
+## Your files live on one device
+
+Vaults are stored only on the device where you created them. They aren't included in iCloud or computer backups, and they're gone if the device is lost, erased or replaced, or if you delete the app. Keep a copy of anything irreplaceable somewhere else.
 
 ## Destructive features
 
-Features such as the Panic Pattern permanently erase data. Use them at your own risk. You're responsible for making sure your use of these features is lawful where you live and travel.
+Features such as the duress vault permanently erase data. Use them at your own risk. You're responsible for making sure your use of these features is lawful where you live and travel.
 
 ## Acceptable use
 
-Don't use ${site.name} or Private Sharing to store or distribute illegal content, to harass others, or to infringe anyone's rights. We may disable sharing links that we're legally required to remove.
+Don't use ${site.name} to store or distribute illegal content, to harass others, or to infringe anyone's rights.
 
-## Subscriptions
+## Beta versions
 
-${site.name} Pro is sold through the App Store. Payment, renewal, cancellation and refunds are handled by Apple under its terms.
+Test versions distributed through TestFlight may contain bugs. Don't keep the only copy of anything important in a beta.
 
 ## No warranty
 
@@ -31,7 +35,7 @@ The app is provided "as is." We work hard to keep it secure and reliable, but we
 
 ## Limitation of liability
 
-To the fullest extent permitted by law, ${site.company} isn't liable for indirect, incidental or consequential damages arising from your use of the app.
+To the fullest extent permitted by law, ${site.company} isn't liable for indirect, incidental or consequential damages arising from your use of the app, including lost data.
 
 ## Changes
 
@@ -43,5 +47,5 @@ ${site.company} · ${site.supportEmail}
 `;
 
 export default function TermsPage() {
-  return <LegalPage title="Terms of Use" updated="October 1, 2026" body={body} />;
+  return <LegalPage title="Terms of Use" updated="October 23, 2026" body={body} />;
 }

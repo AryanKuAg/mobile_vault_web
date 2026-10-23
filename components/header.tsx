@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { MobileNav } from "@/components/mobile-nav";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { mainNav, site } from "@/lib/site";
+import { getApp, mainNav, site } from "@/lib/site";
 
 export function Header() {
   return (
@@ -24,9 +24,11 @@ export function Header() {
         </nav>
         <div className="flex items-center gap-2.5">
           <ThemeToggle />
-          <a href={site.appStoreUrl} className="btn btn-primary hidden !py-2.5 !px-5 text-sm sm:inline-flex">
-            Get the App
-          </a>
+          {getApp && (
+            <a href={getApp.href} className="btn btn-primary hidden !py-2.5 !px-5 text-sm sm:inline-flex">
+              {getApp.short}
+            </a>
+          )}
           <MobileNav />
         </div>
       </div>

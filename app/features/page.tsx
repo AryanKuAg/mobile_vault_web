@@ -5,7 +5,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Features",
-  description: `Every ${site.name} feature, from pattern-key encryption and deniable vaults to encrypted backup and private sharing.`,
+  description: `Every ${site.name} feature, from pattern-key encryption and decoy vaults to the duress vault and disguised icons.`,
 };
 
 export default function FeaturesPage() {
@@ -21,7 +21,7 @@ export default function FeaturesPage() {
         <Container>
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
-              <LinkCard key={f.slug} href={`/features/${f.slug}`} title={f.title} body={f.summary} icon={f.icon} meta={f.tier} />
+              <LinkCard key={f.slug} href={`/features/${f.slug}`} title={f.title} body={f.summary} icon={f.icon} />
             ))}
           </div>
         </Container>

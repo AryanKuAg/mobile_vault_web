@@ -1,20 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Plus_Jakarta_Sans, Space_Grotesk } from "next/font/google";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { site } from "@/lib/site";
 import "./globals.css";
-
-const body = Plus_Jakarta_Sans({
-  variable: "--font-body",
-  subsets: ["latin"],
-});
-
-const heading = Space_Grotesk({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  weight: ["500", "700"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -34,22 +22,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#d4d3ea" },
-    { media: "(prefers-color-scheme: dark)", color: "#1e2138" },
-  ],
+  themeColor: "#0e1726",
 };
 
-// Runs before first paint so a saved theme never flashes the wrong colors.
-const themeScript = `try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+// Runs before first paint so a saved light theme never flashes the dark default.
+const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${body.variable} ${heading.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

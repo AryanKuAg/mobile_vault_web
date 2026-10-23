@@ -2,66 +2,52 @@
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-:root {
-  --bg: #d4d3ea;
-  --bg-deep: #c6c4e2;
-  --surface: #fdfdff;
-  --surface-2: #eeedf8;
-  --ink: #23242f;
-  --muted: #23242fcc;
-  --faint: #23242f8f;
-  --accent: #2b1685;
-  --accent-ink: #f7f6ff;
-  --highlight: #a32626;
-  --line: #2b168533;
-  --header-bg: #d4d3e9dd;
-  --code-bg: #e6e5f5;
-  --phone-frame: #161827;
-  --phone-screen: #0e1020;
-  --shadow: 0 1px 0 #23242f0a, 0 18px 40px -18px #2b168540;
-  color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #1e2138;
-    --bg-deep: #171a2e;
-    --surface: #2c2f43;
-    --surface-2: #25283b;
-    --ink: #e9e9f2;
-    --muted: #e9e9f2c4;
-    --faint: #e9e9f285;
-    --accent: #c9c0fa;
-    --accent-ink: #1e2138;
-    --highlight: #ff8a8a;
-    --line: #c9c0fa33;
-    --header-bg: #1e2138d6;
-    --code-bg: #171a2e;
-    --phone-frame: #0b0c16;
-    --phone-screen: #0e1020;
-    --shadow: 0 1px 0 #0000001a, 0 18px 40px -18px #00000080;
-    color-scheme: dark;
-  }
-}
-
+/* PrivateRoll's palette, taken from the app: LaunchBackground #0E1726, LockGradientEnd #103A48,
+   accent mint #4FE3C1 (teal #0F9E82 in light mode). Amber is the app's second illustration colour.
+   Dark is the default, like the app's lock screen; the toggle switches to light. */
+:root,
 :root[data-theme="dark"] {
-  --bg: #1e2138;
-  --bg-deep: #171a2e;
-  --surface: #2c2f43;
-  --surface-2: #25283b;
-  --ink: #e9e9f2;
-  --muted: #e9e9f2c4;
-  --faint: #e9e9f285;
-  --accent: #c9c0fa;
-  --accent-ink: #1e2138;
-  --highlight: #ff8a8a;
-  --line: #c9c0fa33;
-  --header-bg: #1e2138d6;
-  --code-bg: #171a2e;
-  --phone-frame: #0b0c16;
-  --phone-screen: #0e1020;
-  --shadow: 0 1px 0 #0000001a, 0 18px 40px -18px #00000080;
+  --bg: #0e1726;
+  --bg-deep: #0a111d;
+  --bg-end: #103a48;
+  --surface: #142131;
+  --surface-2: #1a2a3c;
+  --ink: #ffffff;
+  --muted: #ffffffb3;
+  --faint: #ffffff8c;
+  --accent: #4fe3c1;
+  --accent-ink: #0e1726;
+  --highlight: #ffbd54;
+  --line: #ffffff1a;
+  --dot: #ffffff24;
+  --header-bg: #0e1726d1;
+  --code-bg: #0a111d;
+  --phone-frame: #05080d;
+  --phone-screen: #0e1726;
+  --shadow: 0 1px 0 #0000001a, 0 18px 40px -18px #00000099;
   color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  --bg: #f3f6f7;
+  --bg-deep: #e8eef0;
+  --bg-end: #dceaec;
+  --surface: #ffffff;
+  --surface-2: #eef3f4;
+  --ink: #0e1726;
+  --muted: #0e1726c7;
+  --faint: #0e17268f;
+  --accent: #0b7f69;
+  --accent-ink: #ffffff;
+  --highlight: #9a5b00;
+  --line: #0e17261f;
+  --dot: #0e17261f;
+  --header-bg: #f3f6f7dd;
+  --code-bg: #e6edf0;
+  --phone-frame: #0b0f16;
+  --phone-screen: #0e1726;
+  --shadow: 0 1px 0 #0e17260a, 0 18px 40px -18px #0e172640;
+  color-scheme: light;
 }
 
 @theme inline {
@@ -76,8 +62,9 @@
   --color-accent-ink: var(--accent-ink);
   --color-highlight: var(--highlight);
   --color-line: var(--line);
-  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), ui-sans-serif, sans-serif;
+  /* The system font, so the site reads like the app (San Francisco on Apple devices). */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
@@ -100,32 +87,32 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--highlight);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
 }
 
-/* ---------- Buttons ---------- */
+/* ---------- Buttons: the app's primary button, 16pt corners ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  border-radius: 999px;
-  font-weight: 700;
-  padding: 0.85rem 1.5rem;
-  transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+  border-radius: 16px;
+  font-weight: 600;
+  padding: 0.9rem 1.5rem;
+  transition: transform 0.15s, background 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
 .btn:active {
-  transform: translateY(1px);
+  transform: scale(0.98);
 }
 .btn-primary {
   background: var(--accent);
   color: var(--accent-ink);
-  box-shadow: 0 10px 24px -12px var(--accent);
+  box-shadow: 0 10px 28px -14px var(--accent);
 }
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 14px 28px -12px var(--accent);
+  box-shadow: 0 14px 32px -14px var(--accent);
 }
 .btn-ghost {
   border: 1px solid var(--line);
@@ -136,107 +123,49 @@ body {
   border-color: var(--accent);
 }
 
-/* ---------- Hero ---------- */
-.hero-lines {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-.hero-lines span {
-  position: absolute;
-  left: -50%;
-  width: 200%;
-  height: 2px;
-  top: 45%;
-  background: linear-gradient(90deg, transparent, var(--highlight), transparent);
-  opacity: 0.55;
-}
-.hero-lines span:nth-child(1) {
-  transform: rotate(32deg);
-}
-.hero-lines span:nth-child(2) {
-  transform: rotate(-32deg);
-}
+/* ---------- Backdrops ---------- */
+/* A field of dots, like the pattern grid, fading out from the top. */
 .hero-grid {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(var(--line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--line) 1px, transparent 1px);
-  background-size: 56px 56px;
-  mask-image: radial-gradient(ellipse at 70% 40%, #000 0%, transparent 70%);
-  opacity: 0.5;
+  background-image: radial-gradient(circle, var(--dot) 1.6px, transparent 2px);
+  background-size: 34px 34px;
+  mask-image: radial-gradient(ellipse at 70% 30%, #000 0%, transparent 72%);
 }
-
-/* ---------- Skewed strip ---------- */
-.strip {
-  background: var(--highlight);
-  color: var(--bg);
-  transform: skewY(-2deg);
-}
-.strip-item::before {
-  content: "\00d7";
-  font-size: 1.5rem;
-  font-weight: 900;
-  margin-right: 0.6rem;
-  line-height: 1;
-}
-
-/* ---------- Timeline ---------- */
-.timeline::before {
-  content: "";
+/* The mint glow at the top of the app's onboarding screens. */
+.hero-glow {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 11px;
-  width: 2px;
-  background: var(--ink);
-  opacity: 0.85;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 55% at 50% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 72%);
 }
-@media (min-width: 768px) {
-  .timeline::before {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
-.diamond {
-  width: 20px;
-  height: 20px;
-  transform: rotate(45deg);
-  border: 2px solid var(--highlight);
-  background: var(--bg);
+/* The lock screen: always dark, whatever the theme. */
+.lock-gradient {
+  background: linear-gradient(180deg, #0e1726, #103a48);
+  color: #ffffff;
 }
 
-/* ---------- Bracketed panel ---------- */
-.bracket {
+/* ---------- Pattern dot, used as a marker ---------- */
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+/* ---------- Panels and cards: the app's onboarding card, 22pt corners ---------- */
+.panel {
   position: relative;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--bg-deep);
 }
-.bracket::before,
-.bracket::after {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border: 0 solid var(--highlight);
-}
-.bracket::before {
-  top: -1px;
-  left: -1px;
-  border-width: 2px 0 0 2px;
-}
-.bracket::after {
-  bottom: -1px;
-  right: -1px;
-  border-width: 0 2px 2px 0;
-}
-
-/* ---------- Cards ---------- */
 .card {
   background: var(--surface);
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 22px;
   box-shadow: var(--shadow);
   transition: transform 0.18s, border-color 0.18s;
 }
@@ -244,17 +173,26 @@ a.card:hover {
   transform: translateY(-3px);
   border-color: var(--accent);
 }
+.icon-chip {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
 
 /* ---------- Phone mockup ---------- */
 .phone {
   background: var(--phone-frame);
-  border-radius: 46px;
+  border-radius: 48px;
   padding: 10px;
-  box-shadow: 0 40px 90px -20px #00000080, 0 0 0 1px #ffffff12;
+  box-shadow: 0 40px 90px -20px #00000099, 0 0 0 1px #ffffff14;
 }
 .phone-screen {
   background: var(--phone-screen);
-  border-radius: 36px;
+  border-radius: 38px;
   border: 1px solid #ffffff14;
   overflow: hidden;
   position: relative;
@@ -328,7 +266,7 @@ a.card:hover {
   margin-top: 0.45em;
 }
 .prose-vault li::marker {
-  color: var(--highlight);
+  color: var(--accent);
 }
 .prose-vault code {
   font-family: var(--font-mono);

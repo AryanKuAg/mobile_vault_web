@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { mainNav, site } from "@/lib/site";
+import { getApp, mainNav } from "@/lib/site";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -39,9 +39,11 @@ export function MobileNav() {
               </li>
             ))}
           </ul>
-          <a href={site.appStoreUrl} className="btn btn-primary mt-5 w-full">
-            Get {site.name}
-          </a>
+          {getApp && (
+            <a href={getApp.href} className="btn btn-primary mt-5 w-full">
+              {getApp.short}
+            </a>
+          )}
         </nav>
       )}
     </div>

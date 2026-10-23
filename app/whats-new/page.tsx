@@ -29,7 +29,7 @@ export default function WhatsNewPage() {
             <ul className="mt-4 space-y-2 text-muted">
               {roadmap.map((r) => (
                 <li key={r} className="flex gap-3">
-                  <span className="mt-2 h-2 w-2 shrink-0 rotate-45 border-2 border-highlight" />
+                  <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-accent" />
                   {r}
                 </li>
               ))}
@@ -38,7 +38,7 @@ export default function WhatsNewPage() {
           <ol className="relative space-y-12 border-l-2 border-line pl-8">
             {releases.map((r) => (
               <li key={r.version} className="relative">
-                <span className="diamond absolute -left-[42px] top-1.5 !h-4 !w-4" />
+                <span className="dot absolute -left-[41px] top-1" />
                 <p className="text-sm font-semibold text-faint">
                   <span className="mr-2 rounded-full bg-accent px-2.5 py-0.5 font-bold text-accent-ink">v{r.version}</span>
                   {formatMonth(r.date)}

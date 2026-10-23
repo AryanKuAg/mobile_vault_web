@@ -4,26 +4,22 @@ import { useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
+// Dark, like the app's lock screen, unless the visitor picked light.
 function currentTheme(): Theme {
-  const set = document.documentElement.dataset.theme;
-  if (set === "light" || set === "dark") return set;
-  return matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return document.documentElement.dataset.theme === "light" ? "light" : "dark";
 }
 
 const listeners = new Set<() => void>();
 
 function subscribe(cb: () => void) {
   listeners.add(cb);
-  const mq = matchMedia("(prefers-color-scheme: dark)");
-  mq.addEventListener("change", cb);
   return () => {
     listeners.delete(cb);
-    mq.removeEventListener("change", cb);
   };
 }
 
 export function ThemeToggle() {
-  const theme = useSyncExternalStore(subscribe, currentTheme, () => "light" as Theme);
+  const theme = useSyncExternalStore(subscribe, currentTheme, () => "dark" as Theme);
   const next: Theme = theme === "dark" ? "light" : "dark";
 
   function toggle() {

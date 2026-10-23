@@ -4,6 +4,7 @@ import { Container } from "@/components/page-parts";
 export default function NotFound() {
   return (
     <section className="relative overflow-hidden pb-28 pt-[160px]">
+      <div className="hero-glow" />
       <div className="hero-grid" />
       <Container className="relative text-center">
         <p className="font-display text-[clamp(5rem,16vw,9rem)] font-bold leading-none tracking-[-0.05em] text-accent">404</p>

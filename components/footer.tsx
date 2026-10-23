@@ -2,14 +2,12 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { comparisons } from "@/content/compare";
 import { features } from "@/content/features";
-import { site } from "@/lib/site";
+import { getApp, site } from "@/lib/site";
 
 const company = [
   { href: "/about", label: "About" },
   { href: "/whats-new", label: "What's New" },
   { href: "/support", label: "Support" },
-  { href: "/invite", label: "Vault Invite" },
-  { href: site.discordUrl, label: "Discord" },
 ];
 
 const learn = [
@@ -49,12 +47,14 @@ export function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-sm leading-relaxed text-muted">
-              Encrypted photo and file storage for iPhone. Unlocked by a pattern only you know,
-              stored only on devices you own.
+              Encrypted photo and file storage for iPhone and iPad. Unlocked by a pattern only you
+              know, stored only on the device you made it on.
             </p>
-            <a href={site.appStoreUrl} className="btn btn-primary mt-6 !py-2.5 text-sm">
-              Get {site.name}
-            </a>
+            {getApp && (
+              <a href={getApp.href} className="btn btn-primary mt-6 !py-2.5 text-sm">
+                {getApp.short}
+              </a>
+            )}
           </div>
           <Column title="Product" links={features.slice(0, 7).map((f) => ({ href: `/features/${f.slug}`, label: f.title }))} />
           <Column title="Compare" links={comparisons.slice(0, 7).map((c) => ({ href: `/compare/${c.slug}`, label: `vs ${c.competitor}` }))} />

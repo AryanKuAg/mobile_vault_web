@@ -7,39 +7,40 @@ export const metadata: Metadata = { title: "Privacy Policy" };
 const body = `
 ## The short version
 
-${site.name} is designed so that we don't collect personal data. We don't require an account, we can't read your vault, and we don't use advertising or analytics SDKs in the app.
+${site.name} doesn't collect personal data. There's no account, the app has no servers, and it contains no analytics, advertising or tracking code. Your vaults never leave your device.
 
-## Data we never receive
+## What the app does with your data
 
-- The contents of your vault: photos, videos, files, notes, album and vault names.
-- Your pattern, recovery phrase, or any key derived from them.
-- Your name, email address or phone number. No account exists.
+- **Your files stay on your device.** Photos, videos, files and notes you add are encrypted on your iPhone or iPad and stored only there. They're never uploaded, and they're excluded from iCloud and computer backups.
+- **Your pattern is never stored.** It's turned into an encryption key on the device and then discarded.
+- **We receive nothing.** The app makes no network requests of its own. It only goes online when you open a page of this website from inside it, such as this policy.
 
-## Data stored by Apple on your behalf
+## Permissions the app asks for
 
-If you turn on **Encrypted Backup** or **Device Sync**, encrypted data is stored in your private iCloud container. Apple's privacy policy covers that storage. The data is encrypted on your device before upload and we can't read it.
+- **Camera and microphone**, to take photos and videos straight into a vault. Nothing is saved to your photo library.
+- **Photo library**, only when you choose to remove originals after importing them or to save an item from a vault to your library. ${site.name} never browses your library: imports use the system photo picker, which shares only what you select.
 
-Purchases and subscriptions are processed by Apple. We receive anonymous transaction information from Apple to unlock Pro features. It doesn't include your name or email.
+You can change these at any time in the Settings app.
 
-## Private Sharing links
+## Data Apple handles
 
-When you create a sharing link, an encrypted copy of the selected files is uploaded to our storage provider. The decryption key is kept in the link itself and never sent to us. Shared copies are deleted when they expire or when you revoke them. We keep minimal technical logs (such as the time of upload and download count) to enforce expiry and limits.
+Apple processes App Store downloads, and, if you've agreed to share them, crash reports and usage data collected by iOS. Apple's privacy policy covers that. If you test a beta through TestFlight, Apple shares the feedback and crash reports you choose to send with us, together with the name and email address you were invited with, so we can fix problems. We use them only for that.
 
 ## Support emails
 
-If you email us, we receive your email address and whatever you write. We use it only to reply, and delete support threads after 12 months.
+If you email us, we receive your email address and whatever you write. We use it only to reply.
 
 ## This website
 
-This site doesn't use advertising cookies. If we use privacy-friendly, cookie-less analytics, it doesn't track you across sites or build a profile of you.
+This site has no advertising, analytics or tracking cookies. Our host, Vercel, processes standard request data such as IP addresses to serve the site and keep it secure. The site remembers your light or dark theme in your browser's local storage, which never leaves your device. The free tools run entirely in your browser, and the files you use with them aren't uploaded.
 
 ## Children
 
-${site.name} isn't directed to children under 13, and we don't knowingly collect data from them.
+${site.name} isn't directed to children under 13, and we don't collect personal data from anyone, including children.
 
 ## Changes
 
-If we change this policy we'll update the date above and, for meaningful changes, note it in [What's New](/whats-new).
+If this policy changes, we'll update the date at the top and, for meaningful changes, note it in [What's New](/whats-new).
 
 ## Contact
 
@@ -47,5 +48,5 @@ ${site.company} · ${site.supportEmail}
 `;
 
 export default function PrivacyPage() {
-  return <LegalPage title="Privacy Policy" updated="October 1, 2026" body={body} />;
+  return <LegalPage title="Privacy Policy" updated="October 23, 2026" body={body} />;
 }

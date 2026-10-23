@@ -99,13 +99,13 @@ Rules differ widely between countries and change over time. In many places, bord
 ## Before you travel
 
 - **Bring less.** The safest data is data that isn't on the device. Consider a travel phone or a freshly restored one.
-- **Back up and remove.** Move sensitive files to a backup you can restore after arrival, then delete them from the phone.
+- **Back up and remove.** Move sensitive files to a backup you can restore after arrival, then delete them from the phone. PrivateRoll vaults aren't part of iPhone backups, so copy out anything you need first.
 - **Turn off Face ID** before the checkpoint, or press the side and volume buttons together to temporarily require your passcode.
 - **Update iOS** before you go.
 
-## About deniable vaults and panic erase
+## About decoy vaults and duress erase
 
-[Deniable vaults](/features/deniable-vaults) let you open the app without revealing everything in it. But lying to border officials or destroying data during an inspection can be a crime in some countries. Know the rules where you're going, and don't put yourself at legal risk because of an app feature.
+[Decoy vaults](/features/decoy-vaults) let you open the app without revealing everything in it, and a [duress vault](/features/duress-vault) can erase the rest. But lying to border officials or destroying data during an inspection can be a crime in some countries. Know the rules where you're going, and don't put yourself at legal risk because of an app feature.
 
 ## After you arrive
 
@@ -125,7 +125,7 @@ Modern iPhones encrypt storage, so **Erase All Content and Settings** destroys t
 
 ## Checklist
 
-1. Back up the phone, and confirm your vault's [encrypted backup](/features/encrypted-backup) is up to date.
+1. Back up the phone. PrivateRoll vaults aren't included in backups and can't move to another phone, so first share out anything in them you want to keep.
 2. Sign out of iCloud: **Settings → [your name] → Sign Out**. This also turns off Find My.
 3. **Settings → General → Transfer or Reset iPhone → Erase All Content and Settings.**
 4. Remove the SIM or delete the eSIM.
@@ -159,7 +159,7 @@ The iPad is signed in to your Apple account with iCloud Photos turned on. Hidden
 
 ## Long term
 
-Keep truly private photos in an encrypted vault on your own phone and nowhere else. Leave [device sync](/features/device-sync) off for vaults you don't want on other devices.
+Keep truly private photos in an encrypted vault on your own phone and nowhere else. PrivateRoll vaults never sync, so they stay on the device where you made them.
 `,
   },
   {
@@ -187,7 +187,7 @@ A new app, a changed passcode, or deleted history can raise suspicion and make t
 
 ## Where a vault can help
 
-A vault with [deniable vaults](/features/deniable-vaults) and a [disguised icon](/features/disguised-icons) can hold evidence, documents, and contacts without looking unusual. If the app is opened, a decoy vault appears normal.
+A vault app with [decoy vaults](/features/decoy-vaults) and a [disguised icon](/features/disguised-icons) can hold evidence, documents, and contacts without looking unusual. If the app is opened, a decoy vault appears normal.
 
 ## Keep a copy elsewhere
 
@@ -213,8 +213,8 @@ Whether it's online harassment, a landlord dispute, or threats from an ex, good 
 
 ## Store safely
 
-- Keep evidence in a dedicated [hidden vault](/features/hidden-vaults) so it's separate from everyday photos and not visible in Photos.
-- Use [encrypted backup](/features/encrypted-backup) so a lost or broken phone doesn't erase it.
+- Keep evidence in [a vault of its own](/features/decoy-vaults) so it's separate from everyday photos and not visible in Photos.
+- Keep a second copy somewhere you control, such as a computer or a trusted person's device. A vault on one phone disappears with that phone.
 - Add an encrypted note to each item: what happened, when, and who was involved.
 
 ## Keep a log

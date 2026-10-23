@@ -25,7 +25,7 @@ export default async function FeaturePage({ params }: PageProps<"/features/[slug
   return (
     <>
       <PageHero
-        eyebrow={`${feature.title} · ${feature.tier}`}
+        eyebrow={feature.title}
         title={feature.headline}
         lede={feature.lede}
         crumbs={[{ href: "/features", label: "Features" }, { label: feature.title }]}
