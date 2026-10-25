@@ -28,7 +28,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/tools/[slug]">): Promise<Metadata> {
   const t = getTool((await params).slug);
   if (!t) return {};
-  return { title: t.title, description: t.description };
+  return { title: t.title, description: t.description, alternates: { canonical: `/tools/${t.slug}` } };
 }
 
 export default async function ToolPage({ params }: PageProps<"/tools/[slug]">) {

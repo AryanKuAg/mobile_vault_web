@@ -4,6 +4,7 @@ import { releases, roadmap } from "@/content/changelog";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/whats-new" },
   title: "What's New",
   description: `Release notes for every ${site.name} update, and what we're working on next.`,
 };

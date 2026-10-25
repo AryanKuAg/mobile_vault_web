@@ -4,6 +4,7 @@ import { Container, Faq, PageHero } from "@/components/page-parts";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/support" },
   title: "Support",
   description: `Get help with ${site.name}: forgotten patterns, empty vaults, moving to a new iPhone and more.`,
 };

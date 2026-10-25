@@ -3,6 +3,7 @@ import { Container, CtaBand, LinkCard, PageHero } from "@/components/page-parts"
 import { tools } from "@/content/tools";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/tools" },
   title: "Free Privacy Tools",
   description: "Free image and privacy tools that run entirely in your browser: metadata remover, compressor, resizer, converter, QR codes, redaction and passwords.",
 };

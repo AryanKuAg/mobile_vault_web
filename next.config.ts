@@ -25,6 +25,13 @@ const nextConfig: NextConfig = {
   },
   redirects() {
     return [
+      // One address for every page: www and the bare domain both answer, so send www to the bare one.
+      {
+        source: "/:path*",
+        has: [{ type: "host" as const, value: "www.privateroll.app" }],
+        destination: "https://privateroll.app/:path*",
+        permanent: true,
+      },
       ...competitors.map((c) => ({
         source: `/compare/veilbox-vs-${c}`,
         destination: `/compare/privateroll-vs-${c}`,

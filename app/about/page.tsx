@@ -4,6 +4,7 @@ import { Container, CtaBand, PageHero } from "@/components/page-parts";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/about" },
   title: "About",
   description: `Who makes ${site.name}, why it exists, and the principles we build it by.`,
 };

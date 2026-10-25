@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { AppStoreButton, AppStoreQR } from "@/components/app-store-button";
 import { Icon } from "@/components/icon";
@@ -7,6 +8,8 @@ import { comparisons } from "@/content/compare";
 import { homeFaq } from "@/content/faq";
 import { features } from "@/content/features";
 import { site } from "@/lib/site";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 // The same four promises as the app's welcome screen.
 const welcome = [

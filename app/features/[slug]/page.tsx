@@ -13,7 +13,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/features/[slug]">): Promise<Metadata> {
   const f = getFeature((await params).slug);
   if (!f) return {};
-  return { title: f.title, description: f.summary };
+  return { title: f.title, description: f.summary, alternates: { canonical: `/features/${f.slug}` } };
 }
 
 export default async function FeaturePage({ params }: PageProps<"/features/[slug]">) {

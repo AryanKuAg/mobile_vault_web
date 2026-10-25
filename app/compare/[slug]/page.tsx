@@ -13,7 +13,11 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/compare/[slug]">): Promise<Metadata> {
   const c = getComparison((await params).slug);
   if (!c) return {};
-  return { title: `${site.name} vs ${c.competitor}`, description: c.summary };
+  return {
+    title: `${site.name} vs ${c.competitor}`,
+    description: c.summary,
+    alternates: { canonical: `/compare/${c.slug}` },
+  };
 }
 
 function CellValue({ value }: { value: Cell }) {

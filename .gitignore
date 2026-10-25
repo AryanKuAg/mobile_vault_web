@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Search Console report, rebuilt on every run (npm run seo:report)
+/seo/report.json

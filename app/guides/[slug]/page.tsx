@@ -10,7 +10,12 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/guides/[slug]">): Promise<Metadata> {
   const g = getGuide((await params).slug);
   if (!g) return {};
-  return { title: g.title, description: g.description, openGraph: { type: "article", title: g.title, description: g.description } };
+  return {
+    title: g.title,
+    description: g.description,
+    alternates: { canonical: `/guides/${g.slug}` },
+    openGraph: { type: "article", title: g.title, description: g.description },
+  };
 }
 
 export default async function GuidePage({ params }: PageProps<"/guides/[slug]">) {

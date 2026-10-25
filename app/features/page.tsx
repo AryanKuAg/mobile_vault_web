@@ -4,6 +4,7 @@ import { features } from "@/content/features";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/features" },
   title: "Features",
   description: `Every ${site.name} feature, from pattern-key encryption and decoy vaults to the duress vault and disguised icons.`,
 };

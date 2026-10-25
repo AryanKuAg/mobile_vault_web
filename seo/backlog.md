@@ -1,0 +1,44 @@
+# Topic backlog
+
+When Search Console has nothing better (rule 3 in `seo/ROUTINE.md`), the daily run takes the first unticked item, checks its wording with `npm run seo:suggest`, writes it, and ticks it off in the same commit. Each is a search the site doesn't answer yet; the quoted phrases are what Google's autocomplete showed in October 2026. Add to it when a better idea turns up. Rough order: most searched and closest to what PrivateRoll does first.
+
+- [ ] **How to see hidden photos on iPhone** "how to see hidden photos on iphone", "without face id", "new update" · How-to · link /guides/how-to-hide-photos-on-iphone
+- [ ] **How to permanently delete photos from iPhone and iCloud** "how to permanently delete photos from iphone and icloud", "from ipad" · How-to · link /scenarios/selling-or-trading-in-my-iphone
+- [ ] **What Recently Deleted really deletes, and when** "recently deleted photos iphone", "recovery", "disappeared" · Explainer
+- [ ] **How to lock an album on iPhone (and why you can't, quite)** "how to lock an album on iphone photos", "password lock an album" · How-to · link /guides/hidden-album-vs-photo-vault
+- [ ] **Stolen Device Protection on iPhone, explained** "stolen device protection iphone", "is turned on", "greyed out" · Security
+- [ ] **Advanced Data Protection for iCloud: should you turn it on?** "advanced data protection on or off", "iphone reddit" · Security · link /guides/what-is-zero-knowledge-encryption
+- [ ] **How to hide text messages on iPhone** "how to hide text messages on iphone without deleting them", "lock screen" · How-to
+- [ ] **Safety Check on iPhone: what it does and when to use it** "safety check iphone", "settings" · Security · link /scenarios/controlling-relationship-phone-safety (careful: safety topic)
+- [ ] **AirDrop "Contacts Only" vs "Everyone for 10 Minutes"** "airdrop contacts only vs everyone", "meaning" · Explainer
+- [ ] **HEIC vs JPEG on iPhone: which to keep, and when to convert** "heic vs jpeg quality", "which is better" · Explainer · link /tools/image-converter
+- [ ] **Are photo vault apps safe? How to tell before you trust one** "photo vault app recovery", "photo vault app reddit" · Security · link /guides/spot-a-weak-calculator-vault
+- [ ] **What a decoy vault is, and when it helps** "decoy vault", "plausible deniability app" · Explainer · link /features/decoy-vaults
+- [ ] **Duress passwords and panic PINs, explained** "duress password", "panic pin" · Explainer · link /features/duress-vault
+- [ ] **How to make a strong iPhone passcode** "custom alphanumeric code", "6 digit vs 4 digit passcode" · Security · link /guides/pattern-vs-pin-vs-face-id
+- [ ] **Lockdown Mode on iPhone: who needs it** "lockdown mode iphone", "should i turn on lockdown mode" · Security
+- [ ] **How to check your iPhone for spyware or stalkerware** "how to check iphone for spyware", "is my phone being monitored" · Security (careful: safety topic, link official help)
+- [ ] **How to stop sharing your location on iPhone** "how to stop sharing location without them knowing", "find my" · How-to (careful: safety topic)
+- [ ] **Where to keep photos of your passport and ID** "is it safe to keep passport photo on phone", "id card photo" · Security · link /features/vault-camera
+- [ ] **How to scan documents privately on iPhone** "scan documents iphone", "notes app scanner" · How-to · link /features/vault-camera
+- [ ] **Where screenshots go, and who can see them** "where do screenshots go on iphone", "hide screenshots" · Explainer
+- [ ] **How to stop photos showing up in Memories and Featured Photos** "how to stop memories on iphone", "remove photo from featured" · How-to
+- [ ] **NameDrop and Contact sharing: what it shares** "namedrop iphone", "how to turn off namedrop" · Explainer
+- [ ] **Which apps can see your photos? Checking Photos access** "which apps have access to my photos iphone", "limited access" · How-to
+- [ ] **How to send a photo that disappears from iPhone** "disappearing photos iphone", "send photo that disappears imessage" · How-to
+- [ ] **How to blur or redact a photo before you share it** "how to blur part of a picture on iphone", "redact photo" · How-to · link /tools/pixelate-image
+- [ ] **On your phone vs in the cloud: where private photos are safest** "is it safer to store photos locally or in the cloud" · Explainer
+- [ ] **How to hide videos on iPhone** "how to hide videos on iphone" (check it adds to /guides/how-to-hide-photos-on-iphone) · How-to
+- [ ] **How to password protect a folder on iPhone** "how to lock a folder on iphone files", "password protect files" · How-to
+- [ ] **How to hide WhatsApp chats with Chat Lock** "whatsapp chat lock", "hide whatsapp chats iphone" · How-to (check WhatsApp's help pages)
+- [ ] **How to compress photos on iPhone without losing quality** "compress photos iphone", "reduce photo size" · How-to · link /tools/image-compressor
+- [ ] **Passphrase vs password: which is stronger?** "passphrase vs password", "how long should a passphrase be" · Explainer · link /tools/password-generator
+- [ ] **What is AES-256 encryption?** "what is aes 256 encryption", "is aes 256 secure" · Explainer · link /features/security-architecture
+- [ ] **What happens to your photos if you lose your iPhone** "lost iphone photos", "how to protect photos if phone stolen" · Security
+- [ ] **How to hide photos on iPad** "how to hide photos on ipad" (check it adds to the iPhone guide) · How-to
+- [ ] **The best photo vault apps for iPhone, compared honestly** "best photo vault app for iphone", "photo vault app free" · Comparison (disclose that we make PrivateRoll; claims only from each app's current listing)
+- [ ] **Shared Photo Library: what the other people see** "icloud shared photo library privacy", "who can see shared library" · Explainer · link /scenarios/photos-synced-to-family-ipad
+- [ ] **How to stop iPhone suggesting photos to share** "sharing suggestions iphone", "turn off shared with you" · How-to
+- [ ] **Face ID with a mask, glasses and twins: how sure is it?** "can face id be fooled", "face id twins" · Explainer
+- [ ] **How to wipe an iPhone remotely** "erase iphone remotely", "find my erase" · How-to · link /scenarios/selling-or-trading-in-my-iphone
+- [ ] **What a phone repair shop can see on your iPhone** (only if it adds to /guides/protect-photos-before-iphone-repair) · Explainer

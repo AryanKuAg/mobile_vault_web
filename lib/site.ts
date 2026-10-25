@@ -33,5 +33,6 @@ export const mainNav = [
   { href: "/#security", label: "Security" },
   { href: "/compare", label: "Compare" },
   { href: "/guides", label: "Guides" },
+  { href: "/blog", label: "Blog" },
   { href: "/tools", label: "Tools" },
 ] as const;

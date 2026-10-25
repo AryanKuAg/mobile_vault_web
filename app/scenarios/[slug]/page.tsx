@@ -10,7 +10,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps<"/scenarios/[slug]">): Promise<Metadata> {
   const s = getScenario((await params).slug);
   if (!s) return {};
-  return { title: s.title, description: s.description };
+  return { title: s.title, description: s.description, alternates: { canonical: `/scenarios/${s.slug}` } };
 }
 
 export default async function ScenarioPage({ params }: PageProps<"/scenarios/[slug]">) {

@@ -12,6 +12,7 @@ const company = [
 
 const learn = [
   { href: "/guides", label: "Guides" },
+  { href: "/blog", label: "Blog" },
   { href: "/scenarios", label: "Scenarios" },
   { href: "/tools", label: "Free Tools" },
   { href: "/compare", label: "Comparisons" },

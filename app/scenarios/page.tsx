@@ -3,6 +3,7 @@ import { Container, CtaBand, LinkCard, PageHero } from "@/components/page-parts"
 import { scenarioGroups, scenarios } from "@/content/scenarios";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/scenarios" },
   title: "Privacy Scenarios",
   description: "Step-by-step help for real situations: a partner who knows your passcode, a border search, a phone repair, a shared family iPad and more.",
 };

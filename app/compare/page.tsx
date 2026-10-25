@@ -4,6 +4,7 @@ import { comparisons } from "@/content/compare";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/compare" },
   title: "Compare",
   description: `How ${site.name} compares with Apple's Hidden album, Google Photos Locked Folder, popular vault apps and calculator vaults.`,
 };

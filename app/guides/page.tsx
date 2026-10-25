@@ -5,6 +5,7 @@ import { guides } from "@/content/guides";
 import { scenarios } from "@/content/scenarios";
 
 export const metadata: Metadata = {
+  alternates: { canonical: "/guides" },
   title: "Privacy & Encryption Guides",
   description: "Practical, plain-English guides to hiding photos, understanding encryption and keeping your iPhone private.",
 };
