@@ -29,6 +29,8 @@ Some people move photos into an album with a boring name. It takes seconds, and 
 
 Select the photos, tap the **⋯** menu, and choose **Hide**. They disappear from Library, Memories, and widgets and move to **Albums → Utilities → Hidden**, which is locked with Face ID or your passcode.
 
+Lost track of where they went? Here's [how to see hidden photos on iPhone](/blog/how-to-see-hidden-photos-on-iphone).
+
 **Stops:** someone glancing at your camera roll or a photo popping up in a widget.
 **Doesn't stop:** anyone who knows your passcode. The photos also still sync to every device on your iCloud account.
 
