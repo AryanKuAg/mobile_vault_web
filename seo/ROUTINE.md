@@ -20,8 +20,10 @@ Each run publishes **one new post** on privateroll.app, plus at most one improve
 ## 1. Set up
 
 ```sh
-npm ci
+npm install --no-audit --no-fund
 ```
+
+Use `npm install`, not `npm ci`: on Linux, `npm ci` stops because the lockfile made on a Mac leaves out two packages Linux needs (`@emnapi/runtime` and `@emnapi/core`). Don't commit the lockfile changes the install makes. Run `git checkout package-lock.json` before you commit in step 7.
 
 ## 2. Read the data
 
@@ -83,7 +85,7 @@ Then:
 ## 6. Check
 
 ```sh
-npm run lint && npx tsc --noEmit && npm test && npm run build
+npm run lint && npm run typecheck && npm test && npm run build
 ```
 
 Fix whatever fails. If something still fails after two tries, stop:
@@ -106,6 +108,7 @@ Add a line for each change to `seo/log.md`, under the date:
 Then commit and push:
 
 ```sh
+git checkout package-lock.json
 git add -A
 git commit -m "blog: <title>" -m "<why: the query and its numbers, or the backlog item>"
 git push origin HEAD:main

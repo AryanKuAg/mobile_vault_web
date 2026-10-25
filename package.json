@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
     "test": "vitest run",
     "seo:report": "node scripts/seo/gsc.mjs",
     "seo:ping": "node scripts/seo/indexnow.mjs",
