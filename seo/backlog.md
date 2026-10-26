@@ -3,7 +3,7 @@
 When Search Console has nothing better (rule 3 in `seo/ROUTINE.md`), the daily run takes the first unticked item, checks its wording with `npm run seo:suggest`, writes it, and ticks it off in the same commit. Each is a search the site doesn't answer yet; the quoted phrases are what Google's autocomplete showed in October 2026. Add to it when a better idea turns up. Rough order: most searched and closest to what PrivateRoll does first.
 
 - [x] **How to see hidden photos on iPhone** "how to see hidden photos on iphone", "without face id", "new update" · How-to · link /guides/how-to-hide-photos-on-iphone
-- [ ] **How to permanently delete photos from iPhone and iCloud** "how to permanently delete photos from iphone and icloud", "from ipad" · How-to · link /scenarios/selling-or-trading-in-my-iphone
+- [x] **How to permanently delete photos from iPhone and iCloud** "how to permanently delete photos from iphone and icloud", "from ipad" · How-to · link /scenarios/selling-or-trading-in-my-iphone
 - [ ] **What Recently Deleted really deletes, and when** "recently deleted photos iphone", "recovery", "disappeared" · Explainer
 - [ ] **How to lock an album on iPhone (and why you can't, quite)** "how to lock an album on iphone photos", "password lock an album" · How-to · link /guides/hidden-album-vs-photo-vault
 - [ ] **Stolen Device Protection on iPhone, explained** "stolen device protection iphone", "is turned on", "greyed out" · Security

@@ -2,6 +2,10 @@
 
 Newest first, one line per change: the date, what kind of change, the page, what prompted it, and why. Runs read this so they don't repeat a topic or refresh the same page twice within 14 days.
 
+## 2026-10-26
+
+- 2026-10-26 | new | /blog/how-to-permanently-delete-photos-iphone | backlog: "how to permanently delete photos from iphone and icloud" | No Search Console data yet; next backlog item, answers the two-step delete and iCloud sync, linked from the selling-your-iPhone scenario
+
 ## 2026-10-25
 
 - 2026-10-25 | new | /blog/how-to-see-hidden-photos-on-iphone | backlog: "how to see hidden photos on iphone" | No Search Console data yet; first backlog item, answers where the Hidden album is and how to fix a missing one, linked from the hide-photos guide

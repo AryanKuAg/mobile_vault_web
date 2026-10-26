@@ -133,7 +133,7 @@ Modern iPhones encrypt storage, so **Erase All Content and Settings** destroys t
 
 ## Don't forget
 
-Shared albums you created, photos you've sent in messages, and other devices still synced to iCloud Photos aren't affected by erasing one phone.
+Shared albums you created, photos you've sent in messages, and other devices still synced to iCloud Photos aren't affected by erasing one phone. To remove single photos for good, see [how to permanently delete photos from iPhone and iCloud](/blog/how-to-permanently-delete-photos-iphone).
 `,
   },
   {
