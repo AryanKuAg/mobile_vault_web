@@ -2,6 +2,10 @@
 
 Newest first, one line per change: the date, what kind of change, the page, what prompted it, and why. Runs read this so they don't repeat a topic or refresh the same page twice within 14 days.
 
+## 2026-10-27
+
+- 2026-10-27 | new | /blog/recently-deleted-photos-iphone-explained | backlog: "recently deleted photos iphone" | No Search Console data yet; next backlog item, covers the 30 days, early removal (full iCloud, Shared Library) and the album lock, linked from the permanent-delete post
+
 ## 2026-10-26
 
 - 2026-10-26 | new | /blog/how-to-permanently-delete-photos-iphone | backlog: "how to permanently delete photos from iphone and icloud" | No Search Console data yet; next backlog item, answers the two-step delete and iCloud sync, linked from the selling-your-iPhone scenario

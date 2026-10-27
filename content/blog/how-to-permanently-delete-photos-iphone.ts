@@ -36,7 +36,7 @@ Apple's warning is plain: when you delete a photo or video from this album, you 
 
 Nothing you need to do. Apple's guide to [recovering deleted photos](https://support.apple.com/en-by/124460) says anything in Recently Deleted stays for 30 days, and after that it's permanently deleted and can't be brought back.
 
-That's the useful side of the 30 days: if you deleted something by mistake, you can open the album, tap the photo and tap **Recover**. It also means that if you're deleting something because you don't want anyone to see it, the photo is still on your phone, and anyone who can unlock Recently Deleted can see it until you empty the album.
+For a fuller account of what Recently Deleted does and the cases where photos go sooner, see [Recently Deleted photos on iPhone, explained](/blog/recently-deleted-photos-iphone-explained). That's the useful side of the 30 days: if you deleted something by mistake, you can open the album, tap the photo and tap **Recover**. It also means that if you're deleting something because you don't want anyone to see it, the photo is still on your phone, and anyone who can unlock Recently Deleted can see it until you empty the album.
 
 ## How to delete from iPhone and iCloud
 
