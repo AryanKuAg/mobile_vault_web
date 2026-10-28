@@ -79,7 +79,7 @@ Both options take photos out of your main library. The difference is what happen
 
 ## What the Hidden album does well
 
-- It's free and already on your phone.
+- It's free and already on your phone. Wondering about locking other albums? See [how to lock an album on iPhone](/blog/how-to-lock-an-album-on-iphone).
 - It keeps photos out of Memories, Featured Photos, and widgets.
 - Since iOS 16 it requires Face ID or your passcode to open.
 

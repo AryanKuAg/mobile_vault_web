@@ -2,6 +2,7 @@ import type { Article } from "@/content/guides";
 import { post as howToHideAppsOnIphone } from "./how-to-hide-apps-on-iphone";
 import { post as howToPermanentlyDeletePhotosIphone } from "./how-to-permanently-delete-photos-iphone";
 import { post as recentlyDeletedPhotosIphoneExplained } from "./recently-deleted-photos-iphone-explained";
+import { post as howToLockAnAlbumOnIphone } from "./how-to-lock-an-album-on-iphone";
 import { post as howToSeeHiddenPhotosOnIphone } from "./how-to-see-hidden-photos-on-iphone";
 
 // The blog: dated posts, one file each in this folder, listed below. Every post is
@@ -31,7 +32,7 @@ export type BlogPost = Omit<Article, "updated" | "readMinutes" | "related" | "ca
 };
 
 // Newest first. A new post goes in this list, imported like the one above.
-export const posts: BlogPost[] = [howToHideAppsOnIphone, howToSeeHiddenPhotosOnIphone, howToPermanentlyDeletePhotosIphone, recentlyDeletedPhotosIphoneExplained].sort((a, b) => b.published.localeCompare(a.published));
+export const posts: BlogPost[] = [howToLockAnAlbumOnIphone, howToHideAppsOnIphone, howToSeeHiddenPhotosOnIphone, howToPermanentlyDeletePhotosIphone, recentlyDeletedPhotosIphoneExplained].sort((a, b) => b.published.localeCompare(a.published));
 
 export const postPath = (slug: string) => `/blog/${slug}`;
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);

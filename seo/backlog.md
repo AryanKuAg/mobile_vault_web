@@ -5,7 +5,7 @@ When Search Console has nothing better (rule 3 in `seo/ROUTINE.md`), the daily r
 - [x] **How to see hidden photos on iPhone** "how to see hidden photos on iphone", "without face id", "new update" · How-to · link /guides/how-to-hide-photos-on-iphone
 - [x] **How to permanently delete photos from iPhone and iCloud** "how to permanently delete photos from iphone and icloud", "from ipad" · How-to · link /scenarios/selling-or-trading-in-my-iphone
 - [x] **What Recently Deleted really deletes, and when** "recently deleted photos iphone", "recovery", "disappeared" · Explainer
-- [ ] **How to lock an album on iPhone (and why you can't, quite)** "how to lock an album on iphone photos", "password lock an album" · How-to · link /guides/hidden-album-vs-photo-vault
+- [x] **How to lock an album on iPhone (and why you can't, quite)** "how to lock an album on iphone photos", "password lock an album" · How-to · link /guides/hidden-album-vs-photo-vault
 - [ ] **Stolen Device Protection on iPhone, explained** "stolen device protection iphone", "is turned on", "greyed out" · Security
 - [ ] **Advanced Data Protection for iCloud: should you turn it on?** "advanced data protection on or off", "iphone reddit" · Security · link /guides/what-is-zero-knowledge-encryption
 - [ ] **How to hide text messages on iPhone** "how to hide text messages on iphone without deleting them", "lock screen" · How-to
