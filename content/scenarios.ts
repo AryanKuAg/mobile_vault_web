@@ -118,7 +118,7 @@ Restore what you need from your encrypted backup, and change any passcodes you g
     title: "I'm selling my iPhone. How do I make sure my private photos are really gone?",
     description: "A proper erase is fast and reliable, but a few steps around it are easy to miss.",
     category: "Scenario",
-    updated: "2026-08-08",
+    updated: "2026-10-29",
     readMinutes: 3,
     body: `
 Modern iPhones encrypt storage, so **Erase All Content and Settings** destroys the key and makes old data unrecoverable within seconds. The risks are mostly in what's left *around* the phone.
@@ -133,7 +133,7 @@ Modern iPhones encrypt storage, so **Erase All Content and Settings** destroys t
 
 ## Don't forget
 
-Shared albums you created, photos you've sent in messages, and other devices still synced to iCloud Photos aren't affected by erasing one phone. To remove single photos for good, see [how to permanently delete photos from iPhone and iCloud](/blog/how-to-permanently-delete-photos-iphone).
+Shared albums you created, photos you've sent in messages, and other devices still synced to iCloud Photos aren't affected by erasing one phone. To remove single photos for good, see [how to permanently delete photos from iPhone and iCloud](/blog/how-to-permanently-delete-photos-iphone). If Stolen Device Protection is on, turn it off first; [here's how it works](/blog/stolen-device-protection-iphone-explained).
 `,
   },
   {
