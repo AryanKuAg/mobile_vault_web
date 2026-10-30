@@ -2,6 +2,10 @@
 
 Newest first, one line per change: the date, what kind of change, the page, what prompted it, and why. Runs read this so they don't repeat a topic or refresh the same page twice within 14 days.
 
+## 2026-10-30
+
+- 2026-10-30 | new | /blog/advanced-data-protection-icloud-explained | backlog: "advanced data protection on or off" | No Search Console data yet; next backlog item, covers what ADP encrypts, what it leaves out, recovery risk and UK availability, linked from the where-do-hidden-photos-go-icloud guide
+
 ## 2026-10-29
 
 - 2026-10-29 | new | /blog/stolen-device-protection-iphone-explained | backlog: "stolen device protection iphone" | No Search Console data yet; next backlog item, covers what it does, the one-hour delay, setup and greyed-out checks, linked from the selling-your-iPhone scenario

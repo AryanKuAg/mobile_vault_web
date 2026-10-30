@@ -7,7 +7,7 @@ When Search Console has nothing better (rule 3 in `seo/ROUTINE.md`), the daily r
 - [x] **What Recently Deleted really deletes, and when** "recently deleted photos iphone", "recovery", "disappeared" · Explainer
 - [x] **How to lock an album on iPhone (and why you can't, quite)** "how to lock an album on iphone photos", "password lock an album" · How-to · link /guides/hidden-album-vs-photo-vault
 - [x] **Stolen Device Protection on iPhone, explained** "stolen device protection iphone", "is turned on", "greyed out" · Security
-- [ ] **Advanced Data Protection for iCloud: should you turn it on?** "advanced data protection on or off", "iphone reddit" · Security · link /guides/what-is-zero-knowledge-encryption
+- [x] **Advanced Data Protection for iCloud: should you turn it on?** "advanced data protection on or off", "iphone reddit" · Security · link /guides/what-is-zero-knowledge-encryption
 - [ ] **How to hide text messages on iPhone** "how to hide text messages on iphone without deleting them", "lock screen" · How-to
 - [ ] **Safety Check on iPhone: what it does and when to use it** "safety check iphone", "settings" · Security · link /scenarios/controlling-relationship-phone-safety (careful: safety topic)
 - [ ] **AirDrop "Contacts Only" vs "Everyone for 10 Minutes"** "airdrop contacts only vs everyone", "meaning" · Explainer

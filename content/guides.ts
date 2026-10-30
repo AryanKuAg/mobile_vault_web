@@ -379,7 +379,7 @@ Every device signed in to your Apple account with iCloud Photos turned on: your 
 
 ## How it's encrypted in iCloud
 
-With **Standard Data Protection**, iCloud Photos is encrypted, but Apple holds the keys. With **Advanced Data Protection** turned on, Photos becomes end-to-end encrypted and only your devices hold the keys. To turn it on, go to **Settings → [your name] → iCloud → Advanced Data Protection**.
+With **Standard Data Protection**, iCloud Photos is encrypted, but Apple holds the keys. With **Advanced Data Protection** turned on, Photos becomes end-to-end encrypted and only your devices hold the keys. To turn it on, go to **Settings → [your name] → iCloud → Advanced Data Protection**. Our post on [whether to turn Advanced Data Protection on](/blog/advanced-data-protection-icloud-explained) covers what it leaves unencrypted and the recovery risk.
 
 ## Keeping hidden photos off shared devices
 
