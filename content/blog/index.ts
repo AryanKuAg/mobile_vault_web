@@ -1,4 +1,5 @@
 import type { Article } from "@/content/guides";
+import { post as howToHideTextMessagesOnIphone } from "./how-to-hide-text-messages-on-iphone";
 import { post as advancedDataProtectionIcloudExplained } from "./advanced-data-protection-icloud-explained";
 import { post as stolenDeviceProtectionIphoneExplained } from "./stolen-device-protection-iphone-explained";
 import { post as howToHideAppsOnIphone } from "./how-to-hide-apps-on-iphone";
@@ -34,7 +35,7 @@ export type BlogPost = Omit<Article, "updated" | "readMinutes" | "related" | "ca
 };
 
 // Newest first. A new post goes in this list, imported like the one above.
-export const posts: BlogPost[] = [advancedDataProtectionIcloudExplained, stolenDeviceProtectionIphoneExplained, howToLockAnAlbumOnIphone, howToHideAppsOnIphone, howToSeeHiddenPhotosOnIphone, howToPermanentlyDeletePhotosIphone, recentlyDeletedPhotosIphoneExplained].sort((a, b) => b.published.localeCompare(a.published));
+export const posts: BlogPost[] = [howToHideTextMessagesOnIphone, advancedDataProtectionIcloudExplained, stolenDeviceProtectionIphoneExplained, howToLockAnAlbumOnIphone, howToHideAppsOnIphone, howToSeeHiddenPhotosOnIphone, howToPermanentlyDeletePhotosIphone, recentlyDeletedPhotosIphoneExplained].sort((a, b) => b.published.localeCompare(a.published));
 
 export const postPath = (slug: string) => `/blog/${slug}`;
 export const getPost = (slug: string) => posts.find((p) => p.slug === slug);

@@ -43,7 +43,7 @@ The strongest built-in option is a step past locking. Touch and hold the icon, t
 
 There are limits, from Apple's own [guide to locking and hiding apps](https://support.apple.com/guide/iphone/iph00f208d05/ios):
 
-- Only apps from the App Store can be hidden. Built-in apps like Photos and Messages can't, and some, like Camera and Settings, can't even be locked.
+- Only apps from the App Store can be hidden. Built-in apps like Photos and Messages can't, and some, like Camera and Settings, can't even be locked. For texts, see how to [hide text messages on iPhone](/blog/how-to-hide-text-messages-on-iphone) instead.
 - Hiding works on one device. It doesn't sync to your iPad or carry over through iCloud.
 - Children under 13 in a Family Sharing group can't lock or hide apps, and parents can still see what teens download and how much they use it.
 
