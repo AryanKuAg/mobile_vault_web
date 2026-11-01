@@ -9,7 +9,7 @@ When Search Console has nothing better (rule 3 in `seo/ROUTINE.md`), the daily r
 - [x] **Stolen Device Protection on iPhone, explained** "stolen device protection iphone", "is turned on", "greyed out" · Security
 - [x] **Advanced Data Protection for iCloud: should you turn it on?** "advanced data protection on or off", "iphone reddit" · Security · link /guides/what-is-zero-knowledge-encryption
 - [x] **How to hide text messages on iPhone** "how to hide text messages on iphone without deleting them", "lock screen" · How-to
-- [ ] **Safety Check on iPhone: what it does and when to use it** "safety check iphone", "settings" · Security · link /scenarios/controlling-relationship-phone-safety (careful: safety topic)
+- [x] **Safety Check on iPhone: what it does and when to use it** "safety check iphone", "settings" · Security · link /scenarios/controlling-relationship-phone-safety (careful: safety topic)
 - [ ] **AirDrop "Contacts Only" vs "Everyone for 10 Minutes"** "airdrop contacts only vs everyone", "meaning" · Explainer
 - [ ] **HEIC vs JPEG on iPhone: which to keep, and when to convert** "heic vs jpeg quality", "which is better" · Explainer · link /tools/image-converter
 - [ ] **Are photo vault apps safe? How to tell before you trust one** "photo vault app recovery", "photo vault app reddit" · Security · link /guides/spot-a-weak-calculator-vault

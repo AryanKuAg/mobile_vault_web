@@ -2,6 +2,10 @@
 
 Newest first, one line per change: the date, what kind of change, the page, what prompted it, and why. Runs read this so they don't repeat a topic or refresh the same page twice within 14 days.
 
+## 2026-11-01
+
+- 2026-11-01 | new | /blog/safety-check-iphone-explained | backlog: "safety check iphone" | No Search Console data yet (4 impressions in 28 days); next backlog item, covers Emergency Reset vs Manage Sharing & Access, limits, Quick Exit and that changes may be noticed, linked from the controlling-relationship scenario
+
 ## 2026-10-31
 
 - 2026-10-31 | new | /blog/how-to-hide-text-messages-on-iphone | backlog: "how to hide text messages on iphone without deleting them" | No Search Console data yet; next backlog item, covers Show Previews, Hide Alerts (visible to sender), unknown-sender filter and Recently Deleted, linked from the hide-apps post

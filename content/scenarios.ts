@@ -181,7 +181,7 @@ A new app, a changed passcode, or deleted history can raise suspicion and make t
 
 ## Check for monitoring
 
-- **Settings → Privacy & Security → Safety Check** shows who you share location and data with, and can reset access quickly.
+- **Settings → Privacy & Security → Safety Check** shows who you share location and data with, and can reset access quickly. Our [Safety Check explainer](/blog/safety-check-iphone-explained) covers what it changes and who might notice.
 - Review **Find My → People** and **Settings → [your name] → Devices** for unknown devices.
 - Check **VPN & Device Management** for profiles you didn't install.
 
