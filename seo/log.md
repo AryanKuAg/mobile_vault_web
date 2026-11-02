@@ -2,6 +2,10 @@
 
 Newest first, one line per change: the date, what kind of change, the page, what prompted it, and why. Runs read this so they don't repeat a topic or refresh the same page twice within 14 days.
 
+## 2026-11-02
+
+- 2026-11-02 | new | /blog/airdrop-contacts-only-vs-everyone | backlog: "airdrop contacts only vs everyone" | No Search Console data yet (4 impressions in 28 days); next backlog item, covers the two settings, the 10-minute revert, why Contacts Only finds no one, AirDrop codes, linked from the show-one-photo scenario
+
 ## 2026-11-01
 
 - 2026-11-01 | new | /blog/safety-check-iphone-explained | backlog: "safety check iphone" | No Search Console data yet (4 impressions in 28 days); next backlog item, covers Emergency Reset vs Manage Sharing & Access, limits, Quick Exit and that changes may be noticed, linked from the controlling-relationship scenario

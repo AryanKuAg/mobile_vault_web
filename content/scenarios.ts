@@ -50,7 +50,7 @@ It happens constantly: "Look at this," and their thumb is already swiping left.
 
 ## Share instead of hand over
 
-AirDrop or message the single photo. Their phone, their screen, no swiping.
+AirDrop or message the single photo. Their phone, their screen, no swiping. If AirDrop won't find them, see [AirDrop: Contacts Only vs Everyone for 10 Minutes](/blog/airdrop-contacts-only-vs-everyone).
 
 ## Keep the camera roll boring
 
