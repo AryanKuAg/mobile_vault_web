@@ -7,7 +7,7 @@ export const post: BlogPost = {
     "What Stolen Device Protection does on iPhone, the one-hour security delay, how to turn it on or off, and what to check if the setting is greyed out.",
   category: "Security",
   published: "2026-10-29",
-  author: "surya-narayanan",
+  author: "aryan-kumar",
   related: ["/guides/pattern-vs-pin-vs-face-id", "/scenarios/partner-knows-my-passcode", "/scenarios/selling-or-trading-in-my-iphone"],
   body: `
 Stolen Device Protection is an iPhone setting that makes someone who has your passcode do more than type it. Away from familiar places like home or work, it asks for Face ID or Touch ID with no passcode fallback for sensitive actions, and it makes the most serious account changes wait an hour.

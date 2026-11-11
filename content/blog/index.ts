@@ -15,7 +15,6 @@ import { post as howToSeeHiddenPhotosOnIphone } from "./how-to-see-hidden-photos
 
 export const authors = {
   "aryan-kumar": "Aryan Kumar",
-  "surya-narayanan": "Surya Narayanan",
 } as const;
 
 export type AuthorId = keyof typeof authors;

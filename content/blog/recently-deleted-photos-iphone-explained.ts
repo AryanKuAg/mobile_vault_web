@@ -7,7 +7,7 @@ export const post: BlogPost = {
     "Where deleted photos go on iPhone, how long Recently Deleted keeps them, and the cases where a photo is gone sooner or can't be recovered.",
   category: "Explainer",
   published: "2026-10-27",
-  author: "surya-narayanan",
+  author: "aryan-kumar",
   related: ["/blog/how-to-permanently-delete-photos-iphone", "/guides/where-do-hidden-photos-go-icloud", "/guides/how-to-hide-photos-on-iphone"],
   body: `
 When you delete a photo on iPhone, it isn't deleted yet. It moves to the **Recently Deleted** album, where Apple says it stays for 30 days. After that it's permanently deleted, and you can't get it back.

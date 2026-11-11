@@ -7,7 +7,7 @@ export const post: BlogPost = {
     "What Advanced Data Protection changes in iCloud, what it still leaves unencrypted, the recovery risk, and who should turn it on or leave it off.",
   category: "Security",
   published: "2026-10-30",
-  author: "surya-narayanan",
+  author: "aryan-kumar",
   related: ["/guides/what-is-zero-knowledge-encryption", "/guides/where-do-hidden-photos-go-icloud", "/scenarios/selling-or-trading-in-my-iphone"],
   body: `
 Advanced Data Protection (ADP) is an optional iCloud setting that moves most of your iCloud data to end-to-end encryption, so Apple no longer holds the keys. Turn it on if you want your photos, backups and notes out of reach of anyone who gets into Apple's servers, and you're ready to be responsible for your own recovery. Leave it off if you'd rather Apple be able to help you back in.

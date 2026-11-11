@@ -7,7 +7,7 @@ export const post: BlogPost = {
     "Safety Check shows who and which apps can see your location and data, and can stop it fast. What Emergency Reset changes, what it misses, and who might notice.",
   category: "Security",
   published: "2026-11-01",
-  author: "surya-narayanan",
+  author: "aryan-kumar",
   related: ["/scenarios/controlling-relationship-phone-safety", "/scenarios/partner-knows-my-passcode", "/blog/stolen-device-protection-iphone-explained"],
   body: `
 Safety Check is a tool in iPhone Settings that lets you review which people and apps can see your information and stop that sharing. It has two modes: Emergency Reset, which stops everything at once, and Manage Sharing & Access, which lets you go one person or app at a time. It is one useful step. It is not a safety plan, and changes you make with it may be noticed.

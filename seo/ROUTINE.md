@@ -64,9 +64,7 @@ Copy the shape of `content/blog/how-to-hide-apps-on-iphone.ts` exactly.
 - **slug:** lowercase words joined by hyphens, close to the main search, six words at most.
 - **title and description:** a title of 60 characters at most, unlike any other title on the site (guides and scenarios included), and a description of 70–170 characters.
 - **category:** one of `How-to`, `Explainer`, `Security` or `Comparison`.
-- **author:**
-  - `aryan-kumar` for How-to and Comparison posts.
-  - `surya-narayanan` for Explainer and Security posts.
+- **author:** `aryan-kumar`.
 - **related:** 2–3 site paths, such as `/guides/…`, `/features/…`, `/scenarios/…` or `/blog/…`.
 - **body:** markdown in a template literal, using only what `lib/markdown.tsx` renders:
   - `##` and `###` headings, paragraphs, `- ` and `1. ` lists, `>` callouts, `|` tables

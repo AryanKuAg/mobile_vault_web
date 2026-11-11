@@ -11,7 +11,7 @@ export const site = {
   appStoreUrl: "https://apps.apple.com/app/id6826489330" as string | null,
   // A public TestFlight invite (https://testflight.apple.com/join/…), while the app is in beta.
   testFlightUrl: null as string | null,
-  supportEmail: "suryanarayanan7798@gmail.com",
+  supportEmail: "aryanag824@gmail.com",
   // The name shown in the copyright line and as the contact in the legal pages.
   company: "PrivateRoll",
   copyrightYear: 2026,

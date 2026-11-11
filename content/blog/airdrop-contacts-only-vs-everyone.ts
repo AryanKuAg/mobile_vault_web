@@ -7,7 +7,7 @@ export const post: BlogPost = {
     "What AirDrop's Contacts Only and Everyone for 10 Minutes settings mean, who can send you things in each, and why Contacts Only sometimes finds no one.",
   category: "Explainer",
   published: "2026-11-02",
-  author: "surya-narayanan",
+  author: "aryan-kumar",
   related: ["/scenarios/show-one-photo-without-scrolling", "/guides/remove-location-from-photos", "/blog/safety-check-iphone-explained"],
   body: `
 **Contacts Only** lets people in your contacts send you things over AirDrop. **Everyone for 10 Minutes** lets anyone nearby send you a request for ten minutes, then your iPhone switches itself back. Either way, you accept or decline each transfer as it arrives.
