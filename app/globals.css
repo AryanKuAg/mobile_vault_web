@@ -206,26 +206,29 @@ a.card:hover {
   transform: rotate(-6deg);
 }
 
-/* The pill that holds the download button, like piqtra's waitlist field. */
+/* The pill that holds the App Store badge, like piqtra's waitlist field. */
 .get-pill {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   border-radius: 999px;
-  padding: 6px 6px 6px 8px;
+  padding: 7px 7px 7px 9px;
 }
 
-/* ---------- Home: the screenshots, pinned up like polaroids ---------- */
+/* ---------- Home: the app, pinned up like polaroids ---------- */
 .stage {
   position: relative;
   display: flex;
   flex: 1 1 auto;
   min-height: 0;
   align-items: center;
-  /* A screenshot's height. On a computer it's worked out from the space left (above). */
+  /* A photo's height. On a computer it's worked out from the space left (above). */
   --shot-h: 380px;
 }
 .gallery {
+  /* Every photo is a phone screen's shape, and the frame and caption take its width from here,
+     so nothing inside can stretch a frame. */
+  --shot-w: calc(var(--shot-h) * 0.4603);
   display: flex;
   align-items: flex-start;
   justify-content: safe center;
@@ -256,34 +259,97 @@ a.card:hover {
   transform: translateY(calc(var(--y, 0px) - 6px)) rotate(calc(var(--r, 0deg) * 0.4)) scale(1.03);
   z-index: 2;
 }
-.polaroid-photo {
+
+/* A photo: an App Store style panel. A headline over the app's screen in an iPhone, on the
+   graphite of the app's glass. Sizes inside are fractions of the panel's width (cqw). */
+.shot {
+  position: relative;
   display: block;
+  width: var(--shot-w);
   height: var(--shot-h);
-  width: auto;
-  aspect-ratio: 660 / 1434;
+  overflow: hidden;
   border-radius: 2px;
-  background: #000;
+  container-type: inline-size;
+  color: #fff;
+  background:
+    radial-gradient(95% 42% at 50% 42%, #ffffff2b, transparent 72%),
+    linear-gradient(180deg, #353538 0%, #1a1a1c 50%, #080808 100%);
 }
-.polaroid-pair {
+/* The lock screen's grid of dots, faint, behind the headline. */
+.shot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #ffffff1c 1cqw, transparent 1.25cqw);
+  background-size: 16cqw 16cqw;
+  background-position: 0 1cqw;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 42%);
+}
+.shot-title {
+  position: absolute;
+  inset-inline: 7cqw;
+  top: 8.5cqw;
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 12cqw;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.shot-phone {
+  position: absolute;
+  left: 50%;
+  top: 40cqw;
+  width: 80cqw;
+  translate: -50% 0;
+  rotate: var(--tilt, 0deg);
+  padding: 2.4cqw;
+  border-radius: 12.5cqw;
+  background: #050505;
+  box-shadow:
+    0 0 0 0.7cqw #4a4a4d,
+    0 0 0 1.2cqw #0e0e0f,
+    0 9cqw 16cqw -4cqw #000,
+    0 -3cqw 14cqw -4cqw #ffffff2e;
+}
+.shot-phone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10.2cqw;
+}
+/* Two photos on one print, split by a thin line of the paper, like piqtra's first one. */
+.shot-pair {
   display: flex;
-  flex: none;
+  gap: 2px;
 }
-.polaroid-pair .polaroid + .polaroid {
-  margin-left: -1px;
+.captions-pair {
+  display: grid;
+  grid-template-columns: repeat(2, var(--shot-w));
+  column-gap: 2px;
 }
 .polaroid-caption {
   display: block;
-  padding: 10px 6px 12px;
+  width: var(--shot-w);
+  padding: calc(var(--shot-w) * 0.05) 4px calc(var(--shot-w) * 0.07);
   text-align: center;
   font-family: var(--font-hand);
-  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
-  line-height: 1.1;
+  font-weight: 600;
+  font-size: calc(var(--shot-w) * 0.132);
+  line-height: 1.05;
   color: #1d1d1f;
-  white-space: nowrap;
+  text-wrap: balance;
 }
+.captions-pair .polaroid-caption + .polaroid-caption {
+  border-left: 1px solid #00000012;
+}
+
 /* Tape, pins and a clip: what holds each photo up. */
 .tape {
   position: absolute;
+  z-index: 1;
   top: -14px;
   left: 50%;
   width: 84px;
@@ -297,6 +363,7 @@ a.card:hover {
 }
 .pin {
   position: absolute;
+  z-index: 1;
   top: -12px;
   left: 50%;
   width: 24px;
@@ -318,8 +385,9 @@ a.card:hover {
 }
 .clip {
   position: absolute;
-  top: -26px;
-  right: 18px;
+  z-index: 1;
+  top: -30px;
+  right: 3px;
   width: 22px;
   height: 58px;
   rotate: 8deg;

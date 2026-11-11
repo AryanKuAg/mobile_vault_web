@@ -1,53 +1,54 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { AppStoreBadge } from "@/components/app-store-button";
 import { JsonLd } from "@/components/page-parts";
 import { getApp, homeLinks, site } from "@/lib/site";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-type Shot = { src: string; alt: string; caption: string };
-type Photo = { shots: Shot[]; holder: "tape" | "pin" | "clip"; r: number; y: number };
+// One photo: an App Store style panel with a headline over the app's screen, and a handwritten
+// note under it. Screens come from scripts/screenshots.sh in the app repo, scaled to 660 × 1434.
+type Shot = { title: string; screen: string; alt: string; caption: string; tilt: number };
+type Print = { shots: Shot[]; holder: "tape" | "pin" | "clip"; r: number; y: number };
 
-// The app's screens, pinned up like polaroids, with a handwritten note under each.
-// The screenshots come from scripts/screenshots.sh in the app repo, scaled to 660 × 1434.
-const photos: Photo[] = [
+const prints: Print[] = [
   {
     shots: [
-      { src: "/screens/04-lock-screen.webp", alt: "The lock screen: a 5 by 5 grid of dots under “Draw your pattern”", caption: "your pattern = your key" },
-      { src: "/screens/05-recovery-phrase.webp", alt: "The recovery phrase shown when a vault is made, with Copy and Download buttons", caption: "just in case :)" },
+      { title: "Draw Your Pattern", screen: "04-lock-screen", alt: "The lock screen: a 5 by 5 grid of dots under “Draw your pattern”", caption: "pattern = key", tilt: -3 },
+      { title: "Save Your Phrase", screen: "05-recovery-phrase", alt: "The recovery phrase shown when a vault is made, with Copy and Download buttons", caption: "just in case :)", tilt: 3 },
     ],
     holder: "tape",
-    r: -1.6,
+    r: -1.4,
     y: 8,
   },
   {
-    shots: [{ src: "/screens/02-vault.webp", alt: "A vault with six photos, a search field, and buttons for settings, select, sort and lock", caption: "my stuff. my vault." }],
+    shots: [{ title: "Your Own Private Vault", screen: "02-vault", alt: "A vault with six photos, a search field, and buttons for settings, select, sort and lock", caption: "my stuff. my vault.", tilt: 0 }],
     holder: "pin",
-    r: 2.2,
+    r: 2,
     y: -4,
   },
   {
-    shots: [{ src: "/screens/03-viewer.webp", alt: "A photo open full screen in the vault, with share and delete buttons", caption: "only on my screen" }],
+    shots: [{ title: "Only On Your Screen", screen: "03-viewer", alt: "A photo open full screen in the vault, with share and delete buttons", caption: "only on my screen", tilt: -4 }],
     holder: "clip",
-    r: -2.4,
+    r: -2.2,
     y: 12,
   },
   {
-    shots: [{ src: "/screens/06-settings.webp", alt: "Settings: Show Pattern While Drawing, Rate PrivateRoll, Contact Support and Privacy Policy", caption: "hide the line too" }],
+    shots: [{ title: "Hide The Line As You Draw", screen: "06-settings", alt: "Settings: Show Pattern While Drawing, Rate PrivateRoll, Contact Support and Privacy Policy", caption: "no peeking", tilt: 3 }],
     holder: "pin",
     r: 1.6,
     y: 0,
   },
   {
-    shots: [{ src: "/screens/01-welcome.webp", alt: "The welcome screen: Pattern Lock, Fully Encrypted, No Cloud and Recovery Phrase", caption: "no cloud. no account." }],
+    shots: [{ title: "No Cloud. No Account.", screen: "01-welcome", alt: "The welcome screen: Pattern Lock, Fully Encrypted, No Cloud and Recovery Phrase", caption: "stays on my phone", tilt: 0 }],
     holder: "tape",
     r: -1.2,
     y: 10,
   },
 ];
 
-function Holder({ kind }: { kind: Photo["holder"] }) {
+function Holder({ kind }: { kind: Print["holder"] }) {
   if (kind !== "clip") return <span className={kind} aria-hidden="true" />;
   return (
     <svg className="clip" viewBox="0 0 22 58" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
@@ -56,55 +57,54 @@ function Holder({ kind }: { kind: Photo["holder"] }) {
   );
 }
 
-function Polaroid({ shot, style, children }: { shot: Shot; style?: React.CSSProperties; children?: React.ReactNode }) {
+function Panel({ shot }: { shot: Shot }) {
   return (
-    <figure className="polaroid" style={style}>
-      <Image src={shot.src} alt={shot.alt} width={660} height={1434} sizes="260px" loading="eager" className="polaroid-photo" />
-      <figcaption className="polaroid-caption">{shot.caption}</figcaption>
-      {children}
-    </figure>
+    <span className="shot">
+      <span className="shot-title">{shot.title}</span>
+      <span className="shot-phone" style={{ "--tilt": `${shot.tilt}deg` } as React.CSSProperties}>
+        <Image src={`/screens/${shot.screen}.webp`} alt={shot.alt} width={660} height={1434} sizes="240px" loading="eager" />
+      </span>
+    </span>
   );
 }
 
-function PinnedPhoto({ photo }: { photo: Photo }) {
-  const tilt = { "--r": `${photo.r}deg`, "--y": `${photo.y}px` } as React.CSSProperties;
-  if (photo.shots.length === 1) {
-    return (
-      <Polaroid shot={photo.shots[0]} style={tilt}>
-        <Holder kind={photo.holder} />
-      </Polaroid>
-    );
-  }
-  // Two photos taped up side by side, tilted together.
+function PinnedPrint({ print }: { print: Print }) {
+  const tilt = { "--r": `${print.r}deg`, "--y": `${print.y}px` } as React.CSSProperties;
+  const [first, second] = print.shots;
   return (
-    <div className="polaroid-pair relative" style={{ transform: `translateY(${photo.y}px) rotate(${photo.r}deg)` }}>
-      {photo.shots.map((shot) => (
-        <Polaroid key={shot.src} shot={shot} />
-      ))}
-      <Holder kind={photo.holder} />
-    </div>
+    <figure className="polaroid" style={tilt}>
+      <Holder kind={print.holder} />
+      {second ? (
+        <>
+          <span className="shot-pair">
+            <Panel shot={first} />
+            <Panel shot={second} />
+          </span>
+          <figcaption className="captions-pair">
+            <span className="polaroid-caption">{first.caption}</span>
+            <span className="polaroid-caption">{second.caption}</span>
+          </figcaption>
+        </>
+      ) : (
+        <>
+          <Panel shot={first} />
+          <figcaption className="polaroid-caption">{first.caption}</figcaption>
+        </>
+      )}
+    </figure>
   );
 }
 
 // Like piqtra's waitlist field: one pill, with the action on the right.
 function GetPill() {
   return (
-    <div className="get-pill glass w-full max-w-[440px]">
+    <div className="get-pill glass w-full max-w-[460px]">
       <Image src="/app-icon.png" alt="" width={44} height={44} className="h-11 w-11 shrink-0 rounded-[11px] ring-1 ring-white/15" />
       <span className="min-w-0 flex-1 text-left leading-tight">
         <span className="block truncate font-semibold">{site.name}</span>
-        <span className="block truncate text-sm text-muted">{getApp ? "Free on the App Store" : "Coming soon to the App Store"}</span>
+        <span className="block truncate text-sm text-muted">Free for iPhone</span>
       </span>
-      {getApp ? (
-        <a href={getApp.href} className="btn btn-primary shrink-0 !px-5 !py-3 text-[0.95rem]">
-          {getApp.short}
-          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-            <path d="m9 6 6 6-6 6" />
-          </svg>
-        </a>
-      ) : (
-        <span className="btn shrink-0 cursor-default bg-white/10 !px-5 !py-3 text-[0.95rem] text-ink/80">Soon</span>
-      )}
+      <AppStoreBadge height={44} />
     </div>
   );
 }
@@ -121,7 +121,7 @@ export default function Home() {
           applicationCategory: "MultimediaApplication",
           description: site.description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-          ...(site.appStoreUrl ? { installUrl: site.appStoreUrl } : {}),
+          ...(getApp?.store ? { installUrl: getApp.href } : {}),
         }}
       />
 
@@ -147,8 +147,8 @@ export default function Home() {
 
       <section aria-label={`${site.name} screens`} className="stage hero-in d1">
         <div className="gallery">
-          {photos.map((photo) => (
-            <PinnedPhoto key={photo.shots[0].src} photo={photo} />
+          {prints.map((print) => (
+            <PinnedPrint key={print.shots[0].screen} print={print} />
           ))}
         </div>
       </section>

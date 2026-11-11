@@ -1,62 +1,34 @@
-import QRCode from "qrcode";
 import { getApp, site } from "@/lib/site";
 
-const phoneIcon = (
-  <svg viewBox="0 0 24 24" className="h-7 w-7 shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    <rect x="5" y="2" width="14" height="20" rx="3" />
-    <path d="M10 18.5h4" />
-  </svg>
-);
-
-// Swap this for Apple's official badge artwork before launch
-// (https://developer.apple.com/app-store/marketing/guidelines/).
-export function AppStoreButton({ className = "" }: { className?: string }) {
-  const base = `btn shrink-0 whitespace-nowrap !rounded-2xl !px-6 !py-3.5 ${className}`;
-
-  // No listing or public beta yet: say so rather than link nowhere.
-  if (!getApp) {
+// Apple's official "Download on the App Store" badge, unmodified, from
+// https://developer.apple.com/app-store/marketing/guidelines/ (public/badges). The white one
+// matches the app's white buttons on black. Apple asks for at least 40px of height on screen and
+// clear space of a quarter of its height around it.
+export function AppStoreBadge({ height = 52, className = "" }: { height?: number; className?: string }) {
+  if (getApp?.store) {
     return (
-      <span className={`${base} btn-ghost cursor-default`}>
-        {phoneIcon}
-        <span className="flex flex-col items-start leading-tight">
-          <span className="text-[0.7rem] font-semibold uppercase tracking-wider opacity-80">Coming soon</span>
-          <span className="font-display text-lg">To the App Store</span>
-        </span>
-      </span>
+      <a href={getApp.href} className={`inline-block shrink-0 transition hover:opacity-85 ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- an SVG badge needs no optimizing */}
+        <img
+          src="/badges/app-store-white.svg"
+          alt={`Download ${site.name} on the App Store`}
+          width={Math.round(height * 2.9916)}
+          height={height}
+          style={{ height, width: "auto" }}
+        />
+      </a>
     );
   }
-
-  return (
-    <a href={getApp.href} className={`${base} btn-primary`}>
-      {phoneIcon}
-      <span className="flex flex-col items-start leading-tight">
-        <span className="text-[0.7rem] font-semibold uppercase tracking-wider opacity-80">{getApp.eyebrow}</span>
-        <span className="font-display text-lg">{getApp.label}</span>
-      </span>
-    </a>
-  );
+  // A public beta: a plain button rather than Apple's badge.
+  if (getApp) {
+    return (
+      <a href={getApp.href} className={`btn btn-primary ${className}`}>
+        {getApp.label}
+      </a>
+    );
+  }
+  return <span className={`btn btn-ghost cursor-default ${className}`}>Coming soon to the App Store</span>;
 }
 
-export async function AppStoreQR() {
-  if (!getApp) return null;
-
-  const svg = await QRCode.toString(getApp.href, {
-    type: "svg",
-    margin: 0,
-    color: { dark: "#000000", light: "#00000000" },
-  });
-
-  return (
-    <div className="hidden items-center gap-4 rounded-2xl border border-line bg-surface p-3 pr-5 sm:flex">
-      <div
-        className="h-[72px] w-[72px] shrink-0 rounded-lg bg-white p-1.5"
-        aria-hidden="true"
-        dangerouslySetInnerHTML={{ __html: svg }}
-      />
-      <p className="text-sm leading-snug text-muted">
-        <span className="block font-bold text-ink">On a computer?</span>
-        Point your iPhone camera at the code to {site.appStoreUrl ? "open the App Store listing" : "join the beta"}.
-      </p>
-    </div>
-  );
-}
+/** Kept under its old name for the pages that already use it. */
+export const AppStoreButton = AppStoreBadge;

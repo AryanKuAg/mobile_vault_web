@@ -6,9 +6,9 @@ export const site = {
   description:
     "PrivateRoll is an encrypted photo and file vault for iPhone. Draw a pattern to open it, keep everything on your device, and never create an account.",
   url: "https://privateroll.app",
-  // The App Store listing. Set it once the app is live (it's Apple ID 6826489330 in App Store
-  // Connect): "https://apps.apple.com/app/id6826489330".
-  appStoreUrl: null as string | null,
+  // The App Store listing (Apple ID 6826489330 in App Store Connect). Apple answers this address
+  // once the app is released; set it to null to show "Coming soon" instead.
+  appStoreUrl: "https://apps.apple.com/app/id6826489330" as string | null,
   // A public TestFlight invite (https://testflight.apple.com/join/…), while the app is in beta.
   testFlightUrl: null as string | null,
   supportEmail: "suryanarayanan7798@gmail.com",
@@ -22,9 +22,9 @@ export const site = {
 // Where download buttons point: the App Store once live, the public beta before that.
 // While both are null the buttons read "Coming soon" and link nowhere.
 export const getApp = site.appStoreUrl
-  ? { href: site.appStoreUrl, short: "Download", eyebrow: "Download for iPhone", label: "On the App Store" }
+  ? { href: site.appStoreUrl, store: true, label: "Download on the App Store" }
   : site.testFlightUrl
-    ? { href: site.testFlightUrl, short: "Join the beta", eyebrow: "Beta for iPhone", label: "Join on TestFlight" }
+    ? { href: site.testFlightUrl, store: false, label: "Join the beta on TestFlight" }
     : null;
 
 // The pill at the top of every page: the pages App Store Connect links to, like piqtra.com's.

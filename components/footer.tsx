@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { AppStoreBadge } from "@/components/app-store-button";
 import { Logo } from "@/components/logo";
 import { FooterGate } from "@/components/footer-gate";
 import { comparisons } from "@/content/compare";
@@ -54,11 +55,7 @@ export function Footer() {
               An encrypted vault for photos, videos and files on iPhone. Opened by a pattern only you
               know, kept only on the iPhone you made it on.
             </p>
-            {getApp && (
-              <a href={getApp.href} className="btn btn-primary mt-6 !py-2.5 text-sm">
-                {getApp.short}
-              </a>
-            )}
+            {getApp && <AppStoreBadge height={44} className="mt-6" />}
           </div>
           <Column title="Product" links={features.map((f) => ({ href: `/features/${f.slug}`, label: f.title }))} />
           <Column title="Compare" links={comparisons.slice(0, 7).map((c) => ({ href: `/compare/${c.slug}`, label: `vs ${c.competitor}` }))} />

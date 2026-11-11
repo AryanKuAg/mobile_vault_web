@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { AppStoreButton } from "@/components/app-store-button";
 import { Icon } from "@/components/icon";
-import { getApp, site } from "@/lib/site";
+import { site } from "@/lib/site";
 
 export function Container({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return <div className={`mx-auto w-full max-w-6xl px-4 sm:px-6 ${className}`}>{children}</div>;
@@ -96,13 +96,7 @@ export function CtaBand({
         </h2>
         <p className="mx-auto mt-5 max-w-xl text-lg text-white/75">{body}</p>
         <div className="mt-9 flex justify-center">
-          {getApp ? (
-            <a href={getApp.href} className="btn btn-primary !px-7 !py-4 font-display text-lg">
-              {getApp.short}
-            </a>
-          ) : (
-            <span className="btn btn-ghost cursor-default !px-7 !py-4 font-display text-lg">Coming soon to the App Store</span>
-          )}
+          <AppStoreButton height={56} />
         </div>
       </Container>
     </section>
