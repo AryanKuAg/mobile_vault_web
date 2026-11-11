@@ -43,7 +43,7 @@ export async function AppStoreQR() {
   const svg = await QRCode.toString(getApp.href, {
     type: "svg",
     margin: 0,
-    color: { dark: "#0e1726", light: "#00000000" },
+    color: { dark: "#000000", light: "#00000000" },
   });
 
   return (

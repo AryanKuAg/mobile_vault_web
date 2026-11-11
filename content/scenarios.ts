@@ -22,7 +22,7 @@ Photos (including the Hidden album), Messages, Notes locked with the device pass
 
 1. **Decide what actually needs protecting.** Usually it's a small set of things: medical records, a surprise, or photos from before the relationship.
 2. **Move those into a vault with its own secret.** Your passcode won't open it. See how a [pattern key](/features/pattern-key) works.
-3. **Keep the vault boring-looking.** A [disguised icon](/features/disguised-icons) avoids questions in the first place.
+3. **Keep the app out of sight.** Move it off the Home Screen into the App Library, or use iOS's own **Hide and Require Face ID** for it, so it draws fewer questions.
 4. **Empty Recently Deleted** after you move things.
 
 ## If you feel unsafe
@@ -54,7 +54,7 @@ AirDrop or message the single photo. Their phone, their screen, no swiping. If A
 
 ## Keep the camera roll boring
 
-If the photos you're worried about live in a [vault](/features/vault-camera) instead of your camera roll, there's nothing interesting to swipe to.
+If the photos you're worried about live in a [vault](/features/pattern-key) instead of your camera roll, there's nothing interesting to swipe to.
 `,
   },
   {
@@ -103,9 +103,9 @@ Rules differ widely between countries and change over time. In many places, bord
 - **Turn off Face ID** before the checkpoint, or press the side and volume buttons together to temporarily require your passcode.
 - **Update iOS** before you go.
 
-## About decoy vaults and duress erase
+## About decoy vaults
 
-[Decoy vaults](/features/decoy-vaults) let you open the app without revealing everything in it, and a [duress vault](/features/duress-vault) can erase the rest. But lying to border officials or destroying data during an inspection can be a crime in some countries. Know the rules where you're going, and don't put yourself at legal risk because of an app feature.
+[A vault for each pattern](/features/decoy-vaults) lets you open the app without revealing everything in it. But lying to border officials or hiding data during an inspection can be a crime in some countries. Know the rules where you're going, and don't put yourself at legal risk because of an app feature.
 
 ## After you arrive
 
@@ -187,7 +187,7 @@ A new app, a changed passcode, or deleted history can raise suspicion and make t
 
 ## Where a vault can help
 
-A vault app with [decoy vaults](/features/decoy-vaults) and a [disguised icon](/features/disguised-icons) can hold evidence, documents, and contacts without looking unusual. If the app is opened, a decoy vault appears normal.
+A vault app with [a vault for each pattern](/features/decoy-vaults) can hold evidence, documents, and contacts without looking unusual. If the app is opened, a decoy vault appears normal. Keeping the app in the App Library, off the Home Screen, means fewer questions about it.
 
 ## Keep a copy elsewhere
 

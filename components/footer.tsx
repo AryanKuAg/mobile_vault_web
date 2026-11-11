@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
+import { FooterGate } from "@/components/footer-gate";
 import { comparisons } from "@/content/compare";
 import { features } from "@/content/features";
 import { getApp, site } from "@/lib/site";
+
+export { FooterGate };
 
 const company = [
   { href: "/about", label: "About" },
@@ -30,7 +33,7 @@ function Column({ title, links }: { title: string; links: { href: string; label:
       <ul className="space-y-2.5 text-[0.93rem] text-muted">
         {links.map((l) => (
           <li key={l.href}>
-            <Link href={l.href} className="transition hover:text-accent">
+            <Link href={l.href} className="transition hover:text-ink">
               {l.label}
             </Link>
           </li>
@@ -48,8 +51,8 @@ export function Footer() {
           <div className="max-w-xs">
             <Logo />
             <p className="mt-4 text-sm leading-relaxed text-muted">
-              Encrypted photo and file storage for iPhone and iPad. Unlocked by a pattern only you
-              know, stored only on the device you made it on.
+              An encrypted vault for photos, videos and files on iPhone. Opened by a pattern only you
+              know, kept only on the iPhone you made it on.
             </p>
             {getApp && (
               <a href={getApp.href} className="btn btn-primary mt-6 !py-2.5 text-sm">
@@ -57,7 +60,7 @@ export function Footer() {
               </a>
             )}
           </div>
-          <Column title="Product" links={features.slice(0, 7).map((f) => ({ href: `/features/${f.slug}`, label: f.title }))} />
+          <Column title="Product" links={features.map((f) => ({ href: `/features/${f.slug}`, label: f.title }))} />
           <Column title="Compare" links={comparisons.slice(0, 7).map((c) => ({ href: `/compare/${c.slug}`, label: `vs ${c.competitor}` }))} />
           <Column title="Learn" links={learn} />
           <div className="space-y-10">

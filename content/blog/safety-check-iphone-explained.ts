@@ -84,7 +84,7 @@ In those cases, **Manage Sharing & Access** is usually the better start, because
 
 ## A note on keeping private things on your phone
 
-Safety Check controls what is shared with other people and apps. It does not hide what is on your own phone. PrivateRoll, which we make, is a separate kind of tool: an encrypted vault for photos, videos and files, with options such as a [disguised icon](/features/disguised-icons) and [decoy vaults](/features/decoy-vaults). It does not review sharing, detect monitoring or replace advice from a helpline.
+Safety Check controls what is shared with other people and apps. It does not hide what is on your own phone. PrivateRoll, which we make, is a separate kind of tool: an encrypted vault for photos, videos and files, where [each pattern opens its own vault](/features/decoy-vaults). It does not review sharing, detect monitoring or replace advice from a helpline.
 
 ## Related reading from Apple
 

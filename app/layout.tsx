@@ -1,8 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import { Caveat } from "next/font/google";
 import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { Footer, FooterGate } from "@/components/footer";
 import { site } from "@/lib/site";
 import "./globals.css";
+
+// Handwriting for the captions under the home page's photos.
+const caveat = Caveat({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-caveat", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -22,18 +26,13 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0e1726",
+  themeColor: "#000000",
+  colorScheme: "dark",
 };
-
-// Runs before first paint so a saved light theme never flashes the dark default.
-const themeScript = `try{if(localStorage.getItem("theme")==="light")document.documentElement.dataset.theme="light"}catch(e){}`;
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" data-theme="dark" suppressHydrationWarning>
-      <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
-      </head>
+    <html lang="en" className={caveat.variable}>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"
@@ -42,10 +41,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <Header />
-        <main id="main" className="flex-1">
+        <main id="main" className="flex flex-1 flex-col">
           {children}
         </main>
-        <Footer />
+        <FooterGate>
+          <Footer />
+        </FooterGate>
       </body>
     </html>
   );

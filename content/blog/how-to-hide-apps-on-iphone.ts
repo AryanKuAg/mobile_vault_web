@@ -8,7 +8,7 @@ export const post: BlogPost = {
   category: "How-to",
   published: "2026-10-24",
   author: "aryan-kumar",
-  related: ["/guides/how-to-hide-photos-on-iphone", "/features/disguised-icons", "/scenarios/partner-knows-my-passcode"],
+  related: ["/guides/how-to-hide-photos-on-iphone", "/features/decoy-vaults", "/scenarios/partner-knows-my-passcode"],
   body: `
 Hiding an app can mean three different things: getting the icon off your Home Screen, making the app ask for Face ID before it opens, or keeping people from knowing it's installed at all. iPhone can do the first two well. The third is harder than it looks, and it's worth knowing why before you rely on it.
 
@@ -73,7 +73,7 @@ The last column is the one that matters if the person you're worried about knows
 
 If what you're really protecting is the photos, videos or documents inside an app, hiding the app is the outer layer at best. What protects the files themselves is a separate lock that your passcode doesn't open.
 
-That's what we built PrivateRoll to be: a vault that opens with a pattern of its own and keeps its files encrypted on your iPhone. If someone asks you to open it, a second pattern can open a [decoy vault](/features/decoy-vaults) of everyday photos instead. A [disguised icon](/features/disguised-icons) keeps it from drawing attention on the Home Screen, and you can still hide it in the Hidden folder on top of that. For photos already in your library, our guide to [hiding photos on iPhone](/guides/how-to-hide-photos-on-iphone) ranks every method by what it really protects against.
+That's what we built PrivateRoll to be: a vault that opens with a pattern of its own and keeps its files encrypted on your iPhone. If someone asks you to open it, a second pattern can open a [decoy vault](/features/decoy-vaults) of everyday photos instead. You can still hide the app itself in the Hidden folder on top of that. For photos already in your library, our guide to [hiding photos on iPhone](/guides/how-to-hide-photos-on-iphone) ranks every method by what it really protects against.
 `,
   faq: [
     {

@@ -1,337 +1,169 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import { AppStoreButton, AppStoreQR } from "@/components/app-store-button";
-import { Icon } from "@/components/icon";
-import { Container, Eyebrow, Faq, JsonLd } from "@/components/page-parts";
-import { PhoneMockup } from "@/components/phone-mockup";
-import { comparisons } from "@/content/compare";
-import { homeFaq } from "@/content/faq";
-import { features } from "@/content/features";
-import { site } from "@/lib/site";
+import { JsonLd } from "@/components/page-parts";
+import { getApp, homeLinks, site } from "@/lib/site";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-// The same four promises as the app's welcome screen.
-const welcome = [
-  { icon: "pattern", title: "A pattern, not a password", body: "Draw it to get in. No account, no email." },
-  { icon: "lock", title: "Everything encrypted", body: "Photos, videos, files and notes, sealed with AES-256." },
-  { icon: "layers", title: "Unlisted vaults", body: "Each pattern opens its own, and none are listed." },
-  { icon: "alert", title: "A pattern for emergencies", body: "One pattern can erase every other vault." },
+type Shot = { src: string; alt: string; caption: string };
+type Photo = { shots: Shot[]; holder: "tape" | "pin" | "clip"; r: number; y: number };
+
+// The app's screens, pinned up like polaroids, with a handwritten note under each.
+// The screenshots come from scripts/screenshots.sh in the app repo, scaled to 660 × 1434.
+const photos: Photo[] = [
+  {
+    shots: [
+      { src: "/screens/04-lock-screen.webp", alt: "The lock screen: a 5 by 5 grid of dots under “Draw your pattern”", caption: "your pattern = your key" },
+      { src: "/screens/05-recovery-phrase.webp", alt: "The recovery phrase shown when a vault is made, with Copy and Download buttons", caption: "just in case :)" },
+    ],
+    holder: "tape",
+    r: -1.6,
+    y: 8,
+  },
+  {
+    shots: [{ src: "/screens/02-vault.webp", alt: "A vault with six photos, a search field, and buttons for settings, select, sort and lock", caption: "my stuff. my vault." }],
+    holder: "pin",
+    r: 2.2,
+    y: -4,
+  },
+  {
+    shots: [{ src: "/screens/03-viewer.webp", alt: "A photo open full screen in the vault, with share and delete buttons", caption: "only on my screen" }],
+    holder: "clip",
+    r: -2.4,
+    y: 12,
+  },
+  {
+    shots: [{ src: "/screens/06-settings.webp", alt: "Settings: Show Pattern While Drawing, Rate PrivateRoll, Contact Support and Privacy Policy", caption: "hide the line too" }],
+    holder: "pin",
+    r: 1.6,
+    y: 0,
+  },
+  {
+    shots: [{ src: "/screens/01-welcome.webp", alt: "The welcome screen: Pattern Lock, Fully Encrypted, No Cloud and Recovery Phrase", caption: "no cloud. no account." }],
+    holder: "tape",
+    r: -1.2,
+    y: 10,
+  },
 ];
 
-// The five pages of the app's onboarding tour.
-const tour = [
-  {
-    title: "Your pattern is the key",
-    body: "The shape you draw becomes the encryption key. Draw another shape and another vault opens, sealed off from the rest.",
-    href: "/features/pattern-key",
-  },
-  {
-    title: "Nothing to read without it",
-    body: `Names, folders and dates are encrypted along with your files. ${site.name} keeps no list of vaults and never shows how many there are.`,
-    href: "/features/decoy-vaults",
-  },
-  {
-    title: "A pattern for bad moments",
-    body: `Turn any vault into a duress vault. If you're pressured to open ${site.name}, draw its pattern: every other vault is erased and only that one opens.`,
-    href: "/features/duress-vault",
-  },
-  {
-    title: "Hide it in plain sight",
-    body: `Give ${site.name} the icon of a calculator, a level or a printer. Tapping it still leads to your pattern.`,
-    href: "/features/disguised-icons",
-  },
-  {
-    title: "Bound to this device",
-    body: "Your keys are made here and kept in this device's Keychain. Copied vault files are useless anywhere else.",
-    href: "/features/security-architecture",
-  },
-];
+function Holder({ kind }: { kind: Photo["holder"] }) {
+  if (kind !== "clip") return <span className={kind} aria-hidden="true" />;
+  return (
+    <svg className="clip" viewBox="0 0 22 58" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden="true">
+      <path d="M7 16v28a4 4 0 0 0 8 0V10a6 6 0 0 0-12 0v36a8 8 0 0 0 16 0V20" />
+    </svg>
+  );
+}
 
-// The tips the app gives right before you draw your first pattern.
-const tips = [
-  { icon: "pattern", title: "Pick a shape you'll remember", body: "Practice it a few times before you add anything important." },
-  { icon: "mask", title: "Draw it out of sight", body: "Anyone watching over your shoulder could copy it." },
-  { icon: "x", title: "Skip the obvious", body: "Letters, straight lines and corner-to-corner shapes get guessed first." },
-];
+function Polaroid({ shot, style, children }: { shot: Shot; style?: React.CSSProperties; children?: React.ReactNode }) {
+  return (
+    <figure className="polaroid" style={style}>
+      <Image src={shot.src} alt={shot.alt} width={660} height={1434} sizes="260px" loading="eager" className="polaroid-photo" />
+      <figcaption className="polaroid-caption">{shot.caption}</figcaption>
+      {children}
+    </figure>
+  );
+}
 
-const securityPoints = [
-  "AES-256-GCM encryption for every file, thumbnail and file name",
-  "PBKDF2 with 250,000 rounds, tied to a secret that never leaves your device",
-  "Keys exist only in memory while the vault is open",
-  "No account, no servers, no analytics, no ads",
-];
+function PinnedPhoto({ photo }: { photo: Photo }) {
+  const tilt = { "--r": `${photo.r}deg`, "--y": `${photo.y}px` } as React.CSSProperties;
+  if (photo.shots.length === 1) {
+    return (
+      <Polaroid shot={photo.shots[0]} style={tilt}>
+        <Holder kind={photo.holder} />
+      </Polaroid>
+    );
+  }
+  // Two photos taped up side by side, tilted together.
+  return (
+    <div className="polaroid-pair relative" style={{ transform: `translateY(${photo.y}px) rotate(${photo.r}deg)` }}>
+      {photo.shots.map((shot) => (
+        <Polaroid key={shot.src} shot={shot} />
+      ))}
+      <Holder kind={photo.holder} />
+    </div>
+  );
+}
+
+// Like piqtra's waitlist field: one pill, with the action on the right.
+function GetPill() {
+  return (
+    <div className="get-pill glass w-full max-w-[440px]">
+      <Image src="/app-icon.png" alt="" width={44} height={44} className="h-11 w-11 shrink-0 rounded-[11px] ring-1 ring-white/15" />
+      <span className="min-w-0 flex-1 text-left leading-tight">
+        <span className="block truncate font-semibold">{site.name}</span>
+        <span className="block truncate text-sm text-muted">{getApp ? "Free on the App Store" : "Coming soon to the App Store"}</span>
+      </span>
+      {getApp ? (
+        <a href={getApp.href} className="btn btn-primary shrink-0 !px-5 !py-3 text-[0.95rem]">
+          {getApp.short}
+          <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="2.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <path d="m9 6 6 6-6 6" />
+          </svg>
+        </a>
+      ) : (
+        <span className="btn shrink-0 cursor-default bg-white/10 !px-5 !py-3 text-[0.95rem] text-ink/80">Soon</span>
+      )}
+    </div>
+  );
+}
 
 export default function Home() {
   return (
-    <>
+    <div className="home">
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@type": "MobileApplication",
           name: site.name,
-          operatingSystem: "iOS, iPadOS",
-          applicationCategory: "SecurityApplication",
+          operatingSystem: "iOS",
+          applicationCategory: "MultimediaApplication",
           description: site.description,
           offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+          ...(site.appStoreUrl ? { installUrl: site.appStoreUrl } : {}),
         }}
       />
 
-      {/* Hero */}
-      <section className="relative flex min-h-[min(100vh,900px)] items-center overflow-hidden pb-20 pt-[120px]">
-        <div className="hero-glow" />
-        <div className="hero-grid" />
-        <Container className="relative">
-          <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
-            <div className="min-w-0">
-              <div className="mb-7 inline-flex flex-wrap items-center gap-3 rounded-full border border-line bg-surface px-4 py-2 text-sm font-semibold text-muted">
-                {site.rating ? (
-                  <>
-                    <span className="tracking-[2px] text-highlight">★★★★★</span>
-                    <span>
-                      <b className="text-ink">{site.rating.score}</b> from {site.rating.count} ratings
-                    </span>
-                  </>
-                ) : (
-                  <span className="inline-flex items-center gap-2 text-ink">
-                    <Icon name="lock" className="h-4 w-4 text-accent" /> No account needed
-                  </span>
-                )}
-                <span className="h-1 w-1 rounded-full bg-faint" />
-                <span className="text-xs uppercase tracking-[0.08em]">AES-256 · On your device</span>
-              </div>
-              <h1 className="text-balance font-display text-[clamp(2.3rem,5.2vw,3.7rem)] font-bold leading-[1.02] tracking-[-0.03em]">
-                A <span className="text-accent">private place</span> for your photos, videos, files and notes.
-              </h1>
-              <p className="mt-7 max-w-[56ch] text-lg leading-relaxed text-pretty text-muted sm:text-xl">
-                Draw a pattern to get in. Everything you add is encrypted on your iPhone or iPad with AES-256.{" "}
-                <strong className="text-ink">No account. No email. No way in without you.</strong>
-              </p>
-              <div className="mt-10 flex flex-col gap-5">
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <AppStoreButton />
-                  <AppStoreQR />
-                </div>
-                <p className="text-sm text-faint">
-                  Free <span className="mx-2 opacity-50">/</span> iPhone &amp; iPad <span className="mx-2 opacity-50">/</span> No ads
-                </p>
-              </div>
-            </div>
-            <PhoneMockup />
-          </div>
-        </Container>
+      <section className="hero-in relative mt-[clamp(16px,5vh,56px)] px-4 text-center">
+        <h1 className="mx-auto max-w-[14ch] text-balance font-display text-[clamp(2.75rem,6.6vw,5.4rem)] font-bold leading-[1.02] tracking-[-0.045em] sm:max-w-none">
+          Keep it
+          <Image src="/app-icon.png" alt="" width={256} height={256} preload className="title-icon" />
+          to yourself.
+        </h1>
+        <p className="mx-auto mt-[clamp(12px,2.2vh,22px)] max-w-[36em] text-pretty text-[clamp(1.05rem,1.55vw,1.28rem)] leading-snug text-muted">
+          An encrypted vault for your photos, videos and files.{" "}
+          <span className="sm:block">Draw a pattern to open it. Nothing ever leaves your iPhone.</span>
+        </p>
+        <div className="mt-[clamp(18px,3.4vh,32px)] flex flex-col items-center gap-3">
+          <GetPill />
+          <p className="text-[0.82rem] leading-relaxed text-faint">
+            No account. No ads. No tracking.
+            <br />
+            Free · {site.requirements}
+          </p>
+        </div>
       </section>
 
-      {/* Welcome */}
-      <section aria-label={`Why ${site.name}`} className="relative z-10 -mt-6 pb-24">
-        <Container>
-          <div className="card grid gap-px overflow-hidden !shadow-none sm:grid-cols-2 lg:grid-cols-4">
-            {welcome.map((w) => (
-              <div key={w.title} className="flex gap-4 bg-surface p-6">
-                <span className="icon-chip shrink-0">
-                  <Icon name={w.icon} className="h-5 w-5" />
-                </span>
-                <span>
-                  <span className="block font-display text-[1.02rem] font-semibold">{w.title}</span>
-                  <span className="mt-1 block text-[0.93rem] leading-relaxed text-muted">{w.body}</span>
-                </span>
-              </div>
-            ))}
-          </div>
-        </Container>
+      <section aria-label={`${site.name} screens`} className="stage hero-in d1">
+        <div className="gallery">
+          {photos.map((photo) => (
+            <PinnedPhoto key={photo.shots[0].src} photo={photo} />
+          ))}
+        </div>
       </section>
 
-      {/* How it works: the app's tour */}
-      <section id="how-it-works" className="border-t border-line bg-bg-deep py-28">
-        <Container>
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>How it works</Eyebrow>
-            <h2 className="text-balance font-display text-[clamp(2.1rem,4.5vw,3rem)] font-bold leading-[1.04] tracking-[-0.03em]">
-              Five things to know before your first pattern.
-            </h2>
-            <p className="mx-auto mt-5 max-w-[52ch] text-lg text-pretty text-muted">
-              The same short tour {site.name} walks you through when you open it for the first time.
-            </p>
-          </div>
-          <ol className="relative mx-auto max-w-3xl">
-            <span className="absolute bottom-6 left-[7px] top-6 w-[3px] rounded-full bg-accent/30" aria-hidden="true" />
-            {tour.map((t, i) => (
-              <li key={t.title} className="relative flex gap-7 pb-12 last:pb-0">
-                <span className="dot relative mt-2 shrink-0" />
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.12em] text-faint">Step {i + 1}</p>
-                  <h3 className="mt-1 font-display text-2xl font-bold tracking-tight">{t.title}</h3>
-                  <p className="mt-2 max-w-[60ch] leading-relaxed text-muted">{t.body}</p>
-                  <Link href={t.href} className="mt-3 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                    Learn more <Icon name="arrow" className="h-4 w-4" />
-                  </Link>
-                </div>
-              </li>
-            ))}
-          </ol>
-        </Container>
-      </section>
-
-      {/* Security */}
-      <section id="security" className="border-t border-line py-24">
-        <Container>
-          <div className="grid items-center gap-14 lg:grid-cols-2">
-            <div className="min-w-0">
-              <Eyebrow>Security model</Eyebrow>
-              <h2 className="text-balance font-display text-[clamp(1.8rem,4vw,2.4rem)] font-bold leading-[1.08] tracking-[-0.02em]">
-                If someone copied your phone tomorrow, your photos would still be sealed.
-              </h2>
-              <p className="mt-5 max-w-[52ch] text-lg text-muted">
-                There&apos;s no server and no copy of your key anywhere, so there&apos;s nothing to leak, subpoena or sell.
-              </p>
-              <ul className="mt-8 space-y-3.5">
-                {securityPoints.map((p) => (
-                  <li key={p} className="flex gap-3 text-muted">
-                    <Icon name="check" className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/features/security-architecture" className="mt-8 inline-flex items-center gap-2 font-semibold text-accent">
-                Read the full security design <Icon name="arrow" className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="panel min-w-0 p-8 sm:p-10">
-              <pre className="overflow-x-auto font-mono text-[0.85rem] leading-[1.85] text-accent">
-                <code>{`vault.unlock(pattern)
-  ├─ secret    ← keychain, this device only
-  ├─ key       = pbkdf2_sha256(pattern, secret)
-  │              rounds: 250,000
-  ├─ master    = aes_256_gcm.open(key, header)
-  ├─ file_key  = hkdf(master, file_id)
-  └─ plaintext = aes_256_gcm.open(file_key)
-
-vault.lock()
-  └─ release(master, file_keys)   // gone`}</code>
-              </pre>
-            </div>
-          </div>
-        </Container>
-      </section>
-
-      {/* No reset button: the warning the app shows before the first pattern */}
-      <section className="lock-gradient relative overflow-hidden py-24">
-        <Container className="relative">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mx-auto grid h-20 w-20 place-items-center rounded-full bg-[#ff9f0a]/15 text-[#ffb340]">
-              <Icon name="alert" className="h-9 w-9" />
-            </span>
-            <h2 className="mt-6 text-balance font-display text-[clamp(2rem,4.5vw,3rem)] font-bold leading-[1.04] tracking-[-0.03em]">
-              There&apos;s no reset button.
-            </h2>
-            <p className="mx-auto mt-5 max-w-[56ch] text-lg leading-relaxed text-white/75">
-              {site.name} has no account, no email and no recovery key. If you forget a pattern, nobody can open that vault,
-              not even the people who make {site.name}.
-            </p>
-          </div>
-          <div className="mx-auto mt-12 grid max-w-4xl gap-px overflow-hidden rounded-[22px] border border-white/10 sm:grid-cols-3">
-            {tips.map((t) => (
-              <div key={t.title} className="bg-white/[0.06] p-6">
-                <Icon name={t.icon} className="h-6 w-6 text-[#4fe3c1]" />
-                <p className="mt-3 font-display font-semibold">{t.title}</p>
-                <p className="mt-1 text-[0.93rem] leading-relaxed text-white/65">{t.body}</p>
-              </div>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Features */}
-      <section id="features" className="relative py-28">
-        <Container>
-          <div className="mx-auto mb-16 max-w-2xl text-center">
-            <Eyebrow>Features</Eyebrow>
-            <h2 className="text-balance font-display text-[clamp(2.1rem,4.5vw,3rem)] font-bold leading-[1.04] tracking-[-0.03em]">
-              Everything in the app.
-            </h2>
-            <p className="mx-auto mt-5 max-w-[56ch] text-lg text-pretty text-muted">
-              Free, with no account and no ads. Here&apos;s what {site.name} does, and exactly how.
-            </p>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {features.map((f) => (
-              <Link key={f.slug} href={`/features/${f.slug}`} className="card group flex flex-col gap-4 p-6">
-                <span className="icon-chip">
-                  <Icon name={f.icon} className="h-5 w-5" />
-                </span>
-                <span className="min-w-0">
-                  <span className="block font-display text-lg font-bold tracking-tight">{f.title}</span>
-                  <span className="mt-1.5 block text-[0.94rem] leading-relaxed text-muted">{f.summary}</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* Compare */}
-      <section className="border-t border-line bg-bg-deep py-28">
-        <Container>
-          <div className="mb-14 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
-            <div>
-              <Eyebrow>Compare</Eyebrow>
-              <h2 className="font-display text-[clamp(2rem,4vw,2.8rem)] font-bold leading-[1.04] tracking-[-0.03em]">
-                How {site.name} compares
-              </h2>
-            </div>
-            <Link href="/compare" className="btn btn-ghost self-start sm:self-auto">
-              See all comparisons
-            </Link>
-          </div>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {comparisons.slice(0, 4).map((c) => (
-              <Link key={c.slug} href={`/compare/${c.slug}`} className="card group flex flex-col p-6">
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-highlight">{c.kind}</span>
-                <span className="mt-2 font-display text-xl font-bold leading-tight">vs {c.competitor}</span>
-                <span className="mt-3 flex-1 text-[0.93rem] leading-relaxed text-muted">{c.summary}</span>
-                <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">
-                  Compare <Icon name="arrow" className="h-4 w-4 transition group-hover:translate-x-1" />
-                </span>
-              </Link>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* FAQ */}
-      <section className="border-t border-line py-28">
-        <Container className="max-w-3xl">
-          <div className="mb-12 text-center">
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 className="font-display text-[clamp(2rem,4vw,2.8rem)] font-bold tracking-[-0.03em]">Frequently asked questions</h2>
-          </div>
-          <Faq items={homeFaq} />
-          <JsonLd
-            data={{
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: homeFaq.map((f) => ({
-                "@type": "Question",
-                name: f.q,
-                acceptedAnswer: { "@type": "Answer", text: f.a },
-              })),
-            }}
-          />
-        </Container>
-      </section>
-
-      {/* Final CTA */}
-      <section className="relative overflow-hidden border-t border-line py-24">
-        <div className="hero-glow" />
-        <Container className="relative text-center">
-          <h2 className="mx-auto max-w-2xl text-balance font-display text-[clamp(2rem,4.5vw,3rem)] font-bold leading-[1.04] tracking-[-0.03em]">
-            Your phone is shared more than you think. Your vault doesn&apos;t have to be.
-          </h2>
-          <div className="mt-10 flex justify-center">
-            <AppStoreButton />
-          </div>
-        </Container>
-      </section>
-    </>
+      <footer className="page-foot">
+        <span>
+          © {site.copyrightYear} {site.name}
+        </span>
+        <a href={`mailto:${site.supportEmail}`}>{site.supportEmail}</a>
+        {homeLinks.map((l) => (
+          <Link key={l.href} href={l.href}>
+            {l.label}
+          </Link>
+        ))}
+      </footer>
+    </div>
   );
 }

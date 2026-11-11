@@ -61,7 +61,7 @@ If your worry is someone controlling what's on your phone, not stray AirDrop req
 
 ## Where PrivateRoll fits
 
-We make PrivateRoll, a vault for photos and videos on iPhone. It doesn't change how AirDrop works, and it can't tell you who is nearby. What it adds is a place for private photos that is separate from your main library. You can read how that works on our [vault camera](/features/vault-camera) page, which describes capturing straight into the vault so a private photo never lands in your Photos library at all.
+We make PrivateRoll, a vault for photos and videos on iPhone. It doesn't change how AirDrop works, and it can't tell you who is nearby. What it adds is a place for private photos that is separate from your main library, encrypted on your iPhone and opened with a pattern of its own. You can read how that works on our [pattern key](/features/pattern-key) page.
 `,
   faq: [
     {

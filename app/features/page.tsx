@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Container, CtaBand, LinkCard, PageHero } from "@/components/page-parts";
+import { Container, CtaBand, Faq, JsonLd, LinkCard, PageHero } from "@/components/page-parts";
+import { homeFaq } from "@/content/faq";
 import { features } from "@/content/features";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/features" },
   title: "Features",
-  description: `Every ${site.name} feature, from pattern-key encryption and decoy vaults to the duress vault and disguised icons.`,
+  description: `Every ${site.name} feature, from pattern-key encryption and the recovery phrase to a vault for each pattern.`,
 };
 
 export default function FeaturesPage() {
@@ -24,6 +25,19 @@ export default function FeaturesPage() {
             {features.map((f) => (
               <LinkCard key={f.slug} href={`/features/${f.slug}`} title={f.title} body={f.summary} icon={f.icon} />
             ))}
+          </div>
+          <div className="mx-auto mt-24 max-w-3xl">
+            <h2 className="mb-8 text-center font-display text-[clamp(1.8rem,3.5vw,2.4rem)] font-bold tracking-[-0.03em]">
+              Frequently asked questions
+            </h2>
+            <Faq items={homeFaq} />
+            <JsonLd
+              data={{
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                mainEntity: homeFaq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+              }}
+            />
           </div>
         </Container>
       </section>

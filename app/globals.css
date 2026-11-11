@@ -1,53 +1,29 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
-
-/* PrivateRoll's palette, taken from the app: LaunchBackground #0E1726, LockGradientEnd #103A48,
-   accent mint #4FE3C1 (teal #0F9E82 in light mode). Amber is the app's second illustration colour.
-   Dark is the default, like the app's lock screen; the toggle switches to light. */
-:root,
-:root[data-theme="dark"] {
-  --bg: #0e1726;
-  --bg-deep: #0a111d;
-  --bg-end: #103a48;
-  --surface: #142131;
-  --surface-2: #1a2a3c;
+/* PrivateRoll's palette, taken from the app (App/Views/Components/Theme.swift): white on black,
+   with greys for everything secondary. The app is dark only, and so is the site.
+   Greys are a touch lighter than the app's 128/102 so long paragraphs stay readable on a monitor;
+   every text colour clears WCAG AA on black. */
+:root {
+  --bg: #000000;
+  --bg-deep: #050505;
+  --surface: #0e0e0e;
+  --surface-2: #1e1e1e; /* Theme.fill: round buttons and the search field */
   --ink: #ffffff;
-  --muted: #ffffffb3;
-  --faint: #ffffff8c;
-  --accent: #4fe3c1;
-  --accent-ink: #0e1726;
-  --highlight: #ffbd54;
-  --line: #ffffff1a;
-  --dot: #ffffff24;
-  --header-bg: #0e1726d1;
-  --code-bg: #0a111d;
-  --phone-frame: #05080d;
-  --phone-screen: #0e1726;
-  --shadow: 0 1px 0 #0000001a, 0 18px 40px -18px #00000099;
+  --muted: #9a9a9a; /* Theme.secondaryText, lifted for body copy */
+  --faint: #777777; /* Theme.tertiaryText, lifted to 4.6:1 */
+  --accent: #ffffff; /* the app's main buttons are white */
+  --accent-ink: #0b1727; /* AccentForeground: the text on white buttons */
+  --highlight: #d6d6d6;
+  --danger: #ff453a; /* Theme.error */
+  --line: #222222; /* Theme.cardBorder */
+  --line-strong: #2e2e2e;
+  --dot: #ffffff1f;
+  --glass: #ffffff0f;
+  --glass-line: #ffffff1c;
+  --code-bg: #111111;
+  --shadow: 0 1px 0 #ffffff08 inset, 0 24px 48px -24px #000000;
   color-scheme: dark;
-}
-
-:root[data-theme="light"] {
-  --bg: #f3f6f7;
-  --bg-deep: #e8eef0;
-  --bg-end: #dceaec;
-  --surface: #ffffff;
-  --surface-2: #eef3f4;
-  --ink: #0e1726;
-  --muted: #0e1726c7;
-  --faint: #0e17268f;
-  --accent: #0b7f69;
-  --accent-ink: #ffffff;
-  --highlight: #9a5b00;
-  --line: #0e17261f;
-  --dot: #0e17261f;
-  --header-bg: #f3f6f7dd;
-  --code-bg: #e6edf0;
-  --phone-frame: #0b0f16;
-  --phone-screen: #0e1726;
-  --shadow: 0 1px 0 #0e17260a, 0 18px 40px -18px #0e172640;
-  color-scheme: light;
 }
 
 @theme inline {
@@ -61,16 +37,19 @@
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
   --color-highlight: var(--highlight);
+  --color-danger: var(--danger);
   --color-line: var(--line);
   /* The system font, so the site reads like the app (San Francisco on Apple devices). */
   --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-hand: var(--font-caveat), "Bradley Hand", "Segoe Print", cursive;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 96px;
+  background: var(--bg);
 }
 
 body {
@@ -82,45 +61,55 @@ body {
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-ink);
+  background: var(--ink);
+  color: #000;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
 
-/* ---------- Buttons: the app's primary button, 16pt corners ---------- */
+/* ---------- Buttons: the app's capsules ---------- */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  border-radius: 16px;
+  border-radius: 999px;
   font-weight: 600;
-  padding: 0.9rem 1.5rem;
-  transition: transform 0.15s, background 0.15s, box-shadow 0.15s, border-color 0.15s;
+  padding: 0.9rem 1.6rem;
+  transition: transform 0.15s, background 0.15s, border-color 0.15s, opacity 0.15s;
 }
 .btn:active {
-  transform: scale(0.98);
+  transform: scale(0.97);
 }
+/* PrimaryButtonStyle: a white capsule with dark text. */
 .btn-primary {
-  background: var(--accent);
+  background: #ffffff;
   color: var(--accent-ink);
-  box-shadow: 0 10px 28px -14px var(--accent);
 }
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 14px 32px -14px var(--accent);
+  background: #e9e9e9;
 }
+/* SecondaryButtonStyle: a glass capsule. */
 .btn-ghost {
-  border: 1px solid var(--line);
-  background: var(--surface);
+  border: 1px solid var(--glass-line);
+  background: var(--glass);
   color: var(--ink);
+  backdrop-filter: blur(16px);
 }
 .btn-ghost:hover {
-  border-color: var(--accent);
+  background: #ffffff17;
+}
+
+/* ---------- Glass: the app's Liquid Glass buttons and bars ---------- */
+.glass {
+  background: color-mix(in srgb, #1e1e1e 62%, transparent);
+  border: 1px solid var(--glass-line);
+  box-shadow: 0 1px 0 #ffffff12 inset, 0 12px 32px -16px #000;
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
 }
 
 /* ---------- Backdrops ---------- */
@@ -131,19 +120,20 @@ body {
   pointer-events: none;
   background-image: radial-gradient(circle, var(--dot) 1.6px, transparent 2px);
   background-size: 34px 34px;
-  mask-image: radial-gradient(ellipse at 70% 30%, #000 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 0%, transparent 70%);
 }
-/* The mint glow at the top of the app's onboarding screens. */
+/* A soft light from above, like glass catching it. */
 .hero-glow {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(60% 55% at 50% 0%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 72%);
+  background: radial-gradient(60% 50% at 50% 0%, #ffffff12, transparent 72%);
 }
-/* The lock screen: always dark, whatever the theme. */
+/* The lock screen: black, whatever the page. */
 .lock-gradient {
-  background: linear-gradient(180deg, #0e1726, #103a48);
+  background: #000;
   color: #ffffff;
+  border-top: 1px solid var(--line);
 }
 
 /* ---------- Pattern dot, used as a marker ---------- */
@@ -151,11 +141,11 @@ body {
   width: 16px;
   height: 16px;
   border-radius: 999px;
-  background: var(--accent);
-  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 22%, transparent);
+  background: var(--ink);
+  box-shadow: 0 0 0 6px #ffffff1f;
 }
 
-/* ---------- Panels and cards: the app's onboarding card, 22pt corners ---------- */
+/* ---------- Panels and cards: the app's welcome cards ---------- */
 .panel {
   position: relative;
   border: 1px solid var(--line);
@@ -171,36 +161,204 @@ body {
 }
 a.card:hover {
   transform: translateY(-3px);
-  border-color: var(--accent);
+  border-color: var(--line-strong);
 }
 .icon-chip {
   display: grid;
   place-items: center;
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border-radius: 999px;
+  color: var(--ink);
+  background: var(--surface-2);
 }
 
-/* ---------- Phone mockup ---------- */
-.phone {
-  background: var(--phone-frame);
-  border-radius: 48px;
-  padding: 10px;
-  box-shadow: 0 40px 90px -20px #00000099, 0 0 0 1px #ffffff14;
+/* ---------- Home: one screen, like the app's welcome ---------- */
+:root {
+  --nav-h: 68px; /* the pill header: 16px above, a 44px pill, 8px below */
 }
-.phone-screen {
-  background: var(--phone-screen);
-  border-radius: 38px;
-  border: 1px solid #ffffff14;
-  overflow: hidden;
+.home {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+}
+/* On a computer the whole page fits the window, and the photos take whatever height is left. */
+@media (min-width: 768px) and (min-height: 740px) {
+  .home {
+    flex: none;
+    height: calc(100svh - var(--nav-h));
+    overflow: hidden;
+  }
+  .home .stage {
+    container-type: size;
+    --shot-h: clamp(180px, min(calc(100cqh - 128px), calc((100cqw - 320px) / 3.25)), 560px);
+  }
+}
+
+.title-icon {
+  display: inline-block;
+  width: 0.92em;
+  height: 0.92em;
+  margin: 0 0.12em;
+  vertical-align: -0.12em;
+  border-radius: 22.5%;
+  box-shadow: 0 0 0 1px #ffffff2e, 0 10px 30px -6px #ffffff26;
+  transform: rotate(-6deg);
+}
+
+/* The pill that holds the download button, like piqtra's waitlist field. */
+.get-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 999px;
+  padding: 6px 6px 6px 8px;
+}
+
+/* ---------- Home: the screenshots, pinned up like polaroids ---------- */
+.stage {
   position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  align-items: center;
+  /* A screenshot's height. On a computer it's worked out from the space left (above). */
+  --shot-h: 380px;
 }
-.phone-stage {
+.gallery {
+  display: flex;
+  align-items: flex-start;
+  justify-content: safe center;
+  gap: clamp(14px, 1.8vw, 26px);
+  width: 100%;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 34px max(20px, calc((100vw - 1500px) / 2)) 26px;
+}
+.gallery::-webkit-scrollbar {
+  display: none;
+}
+.polaroid {
+  position: relative;
+  flex: none;
+  margin: 0;
+  padding: 9px 9px 0;
+  border-radius: 4px;
+  /* White photo paper: the app's white on black. */
+  background: linear-gradient(180deg, #fbfbf9, #efefec);
+  box-shadow: 0 30px 50px -22px #000, 0 8px 16px -8px #000, 0 0 0 1px #ffffff2e;
+  scroll-snap-align: center;
+  transform: translateY(var(--y, 0)) rotate(var(--r, 0deg));
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.polaroid:hover {
+  transform: translateY(calc(var(--y, 0px) - 6px)) rotate(calc(var(--r, 0deg) * 0.4)) scale(1.03);
+  z-index: 2;
+}
+.polaroid-photo {
+  display: block;
+  height: var(--shot-h);
+  width: auto;
+  aspect-ratio: 660 / 1434;
+  border-radius: 2px;
+  background: #000;
+}
+.polaroid-pair {
+  display: flex;
+  flex: none;
+}
+.polaroid-pair .polaroid + .polaroid {
+  margin-left: -1px;
+}
+.polaroid-caption {
+  display: block;
+  padding: 10px 6px 12px;
+  text-align: center;
+  font-family: var(--font-hand);
+  font-size: clamp(1.15rem, 1.5vw, 1.45rem);
+  line-height: 1.1;
+  color: #1d1d1f;
+  white-space: nowrap;
+}
+/* Tape, pins and a clip: what holds each photo up. */
+.tape {
   position: absolute;
-  inset: 0;
-  transition: opacity 0.45s ease;
+  top: -14px;
+  left: 50%;
+  width: 84px;
+  height: 26px;
+  translate: -50% 0;
+  rotate: -4deg;
+  background: linear-gradient(180deg, #d8d8d2d9, #c4c4bcd0);
+  border-left: 1px dashed #00000014;
+  border-right: 1px dashed #00000014;
+  box-shadow: 0 2px 4px -2px #0006;
+}
+.pin {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  translate: -50% 0;
+  border-radius: 999px;
+  background: radial-gradient(circle at 35% 30%, #ffffff 0 18%, #cfcfcf 30%, #6f6f6f 78%);
+  box-shadow: 0 6px 8px -2px #000c, 0 0 0 1px #00000066;
+}
+.pin::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 22px;
+  width: 2px;
+  height: 7px;
+  translate: -50% 0;
+  background: linear-gradient(#9a9a9a, transparent);
+}
+.clip {
+  position: absolute;
+  top: -26px;
+  right: 18px;
+  width: 22px;
+  height: 58px;
+  rotate: 8deg;
+  color: #bdbdbd;
+  filter: drop-shadow(0 3px 3px #000c);
+}
+
+.page-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;
+  padding: 10px 20px 22px;
+  font-size: 0.82rem;
+  color: var(--faint);
+}
+.page-foot a:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 767px) {
+  .gallery {
+    justify-content: flex-start;
+    padding-inline: 24px;
+  }
+}
+
+/* Fades the hero and the photos in on first load. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.hero-in {
+  animation: rise 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.hero-in.d1 {
+  animation-delay: 0.12s;
 }
 
 /* ---------- FAQ ---------- */
@@ -247,10 +405,14 @@ a.card:hover {
   color: var(--ink);
 }
 .prose-vault a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 3px;
   text-decoration-thickness: 1px;
+  text-decoration-color: #ffffff66;
+}
+.prose-vault a:hover {
+  text-decoration-color: #ffffff;
 }
 .prose-vault ul,
 .prose-vault ol {
@@ -266,7 +428,7 @@ a.card:hover {
   margin-top: 0.45em;
 }
 .prose-vault li::marker {
-  color: var(--accent);
+  color: var(--faint);
 }
 .prose-vault code {
   font-family: var(--font-mono);
@@ -277,7 +439,7 @@ a.card:hover {
   color: var(--ink);
 }
 .prose-vault blockquote {
-  border-left: 3px solid var(--highlight);
+  border-left: 3px solid var(--line-strong);
   background: var(--surface);
   padding: 1rem 1.25rem;
   border-radius: 0 14px 14px 0;

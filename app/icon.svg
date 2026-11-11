@@ -1,15 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0F1B2D"/>
-      <stop offset="1" stop-color="#11465A"/>
-    </linearGradient>
-  </defs>
-  <rect width="1024" height="1024" rx="230" fill="url(#bg)"/>
-  <rect x="234" y="234" width="556" height="556" rx="74" fill="none" stroke="#fff" stroke-width="44"/>
-  <rect x="176" y="290" width="56" height="80" rx="18" fill="#fff"/>
-  <rect x="176" y="654" width="56" height="80" rx="18" fill="#fff"/>
-  <circle cx="512" cy="512" r="130" fill="none" stroke="#4FE3C1" stroke-width="40"/>
-  <g stroke="#4FE3C1" stroke-width="30"><line x1="540.3" y1="540.3" x2="618.1" y2="618.1"/><line x1="483.7" y1="540.3" x2="405.9" y2="618.1"/><line x1="483.7" y1="483.7" x2="405.9" y2="405.9"/><line x1="540.3" y1="483.7" x2="618.1" y2="405.9"/></g>
-  <circle cx="512" cy="512" r="46" fill="#4FE3C1"/>
+  <rect width="1024" height="1024" rx="230" fill="#000"/>
+  <path d="M512 238 L306 314 Q291 320 291 336 L291 558 Q291 690 512 789 Q733 690 733 558 L733 336 Q733 320 718 314 Z" fill="none" stroke="#fff" stroke-width="49" stroke-linejoin="round"/>
+  <path d="M447 468 L447 420 A65.5 65.5 0 0 1 578 420 L578 468" fill="none" stroke="#fff" stroke-width="31"/>
+  <rect x="406" y="465" width="214" height="182" rx="28" fill="#fff"/>
 </svg>

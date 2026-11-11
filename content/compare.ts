@@ -44,7 +44,7 @@ export const comparisons: Comparison[] = [
     chooseUs: [
       "A partner, child, or coworker knows your passcode or sees you type it.",
       "You need a vault that can't be opened by whoever has your phone unlocked.",
-      "You want documents, videos, and notes in the same encrypted place.",
+      "You want photos, videos, and documents in the same encrypted place.",
     ],
     body: `
 ## The passcode problem
@@ -75,7 +75,6 @@ If your main concern is a stranger scrolling past a photo, the Hidden album may 
       { label: "Works without an account or email", us: "yes", them: "Check current listing" },
       { label: "Key derived from your secret (zero-knowledge)", us: "yes", them: "Check current listing" },
       { label: "Decoy vault", us: "yes", them: "Premium feature" },
-      { label: "Duress erase", us: "yes", them: "Check current listing" },
       { label: "Cloud backup", us: "No, device only", them: "Own cloud service" },
       { label: "Ads in free tier", us: "no", them: "Check current listing" },
       { label: "Price", us: "Free", them: "Free, Premium subscription" },
@@ -146,7 +145,7 @@ Open each app's settings and look for answers to three questions. What happens i
     summary: "Apps that pose as a calculator. The disguise is clever, but what's behind it matters more.",
     lede: "Calculator vaults open when you type a code into what looks like a working calculator. It's a fun trick. The question is how well the files behind it are protected.",
     rows: [
-      { label: "Disguise as a utility", us: "Icon only", them: "Working fake calculator" },
+      { label: "Disguise as a utility", us: "no", them: "Working fake calculator" },
       { label: "Strong, documented encryption", us: "yes", them: "Varies widely" },
       { label: "No ads", us: "yes", them: "Often ad-supported" },
       { label: "No account required", us: "yes", them: "Varies" },
@@ -168,7 +167,7 @@ A calculator disguise stops a casual glance. It won't stop someone who searches 
 - Is there an ad SDK? Ads mean third-party code running inside your vault.
 - What's the recovery process? Email resets mean the developer can get in.
 
-We wrote a full guide on [spotting a weak calculator vault](/guides/spot-a-weak-calculator-vault). If you like the disguise idea, PrivateRoll offers [utility-style icons](/features/disguised-icons) with real encryption behind them.
+We wrote a full guide on [spotting a weak calculator vault](/guides/spot-a-weak-calculator-vault). PrivateRoll doesn't pretend to be anything else. It puts its effort into the [encryption](/features/security-architecture) instead, and iOS can hide any app from the Home Screen.
 `,
   },
   {
@@ -212,7 +211,7 @@ When backup for Locked Folder is turned on, the photos are stored in your Google
       { label: "Encrypted with a key Apple can't read", us: "yes", them: "yes" },
       { label: "Separate secret from your phone passcode", us: "yes", them: "Optional" },
       { label: "Designed for large photo and video libraries", us: "yes", them: "no" },
-      { label: "Full-screen viewer and folders", us: "yes", them: "no" },
+      { label: "Full-screen viewer and search", us: "yes", them: "no" },
       { label: "Decoy vaults", us: "yes", them: "no" },
       { label: "Price", us: "Free", them: "Free" },
     ],

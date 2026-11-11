@@ -1,6 +1,6 @@
 # privateroll.app
 
-The website for PrivateRoll, the encrypted photo vault for iPhone and iPad. Built with Next.js.
+The website for PrivateRoll, the encrypted photo vault for iPhone. Built with Next.js. The look follows the app: white on black, capsule buttons and a glass pill nav (`app/globals.css`).
 
 ```bash
 npm install

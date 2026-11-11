@@ -1,29 +1,22 @@
 import { site } from "@/lib/site";
 
-// The app icon: a safe door with a mint dial on navy. Same geometry as the iOS icon
-// (scripts/generate_icons.py in the app repo), on a 1024 canvas.
+// The app icon: a white shield and padlock on black, traced from the iOS icon on a 1024 canvas.
+// Plain shapes only, so the blog's image renderer can draw it too.
+export const iconShapes = {
+  shield:
+    "M512 238 L306 314 Q291 320 291 336 L291 558 Q291 690 512 789 Q733 690 733 558 L733 336 Q733 320 718 314 Z",
+  shackle: "M447 468 L447 420 A65.5 65.5 0 0 1 578 420 L578 468",
+  body: { x: 406, y: 465, width: 214, height: 182, rx: 28 },
+} as const;
+
 export function LogoMark({ className = "h-8 w-8" }: { className?: string }) {
-  const spokes = [45, 135, 225, 315].map((deg) => {
-    const a = (deg * Math.PI) / 180;
-    return { x1: 512 + Math.cos(a) * 40, y1: 512 + Math.sin(a) * 40, x2: 512 + Math.cos(a) * 150, y2: 512 + Math.sin(a) * 150 };
-  });
   return (
     <svg viewBox="0 0 1024 1024" className={className} aria-hidden="true">
-      <defs>
-        <linearGradient id="privateroll-icon-bg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#0F1B2D" />
-          <stop offset="1" stopColor="#11465A" />
-        </linearGradient>
-      </defs>
-      <rect width="1024" height="1024" rx="230" fill="url(#privateroll-icon-bg)" />
-      <rect x="234" y="234" width="556" height="556" rx="74" fill="none" stroke="#fff" strokeWidth="44" />
-      <rect x="176" y="290" width="56" height="80" rx="18" fill="#fff" />
-      <rect x="176" y="654" width="56" height="80" rx="18" fill="#fff" />
-      <circle cx="512" cy="512" r="130" fill="none" stroke="#4FE3C1" strokeWidth="40" />
-      {spokes.map((s, i) => (
-        <line key={i} {...s} stroke="#4FE3C1" strokeWidth="30" />
-      ))}
-      <circle cx="512" cy="512" r="46" fill="#4FE3C1" />
+      <rect width="1024" height="1024" rx="230" fill="#000" />
+      <rect x="4" y="4" width="1016" height="1016" rx="226" fill="none" stroke="#fff" strokeOpacity="0.18" strokeWidth="8" />
+      <path d={iconShapes.shield} fill="none" stroke="#fff" strokeWidth="49" strokeLinejoin="round" />
+      <path d={iconShapes.shackle} fill="none" stroke="#fff" strokeWidth="31" />
+      <rect {...iconShapes.body} fill="#fff" />
     </svg>
   );
 }

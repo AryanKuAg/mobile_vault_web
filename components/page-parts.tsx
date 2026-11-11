@@ -60,7 +60,7 @@ export function PageHero({
   children?: React.ReactNode;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-line pb-16 pt-[128px] sm:pb-20">
+    <section className="relative overflow-hidden border-b border-line pb-16 pt-12 sm:pb-20 sm:pt-16">
       <div className="hero-glow" />
       <div className="hero-grid" />
       <Container className="relative">
@@ -82,7 +82,7 @@ export function PageHero({
 
 export function CtaBand({
   title = "Your photos deserve a lock that actually locks.",
-  body = `${site.name} is free. No account, no email, no tracking. Just a pattern only you know.`,
+  body = `${site.name} is free for iPhone. No account, no email, no tracking. Just a pattern only you know.`,
 }: {
   title?: string;
   body?: string;
@@ -97,16 +97,11 @@ export function CtaBand({
         <p className="mx-auto mt-5 max-w-xl text-lg text-white/75">{body}</p>
         <div className="mt-9 flex justify-center">
           {getApp ? (
-            <a
-              href={getApp.href}
-              className="btn bg-[#4fe3c1] !px-7 !py-4 font-display text-lg text-[#0e1726] hover:-translate-y-0.5"
-            >
+            <a href={getApp.href} className="btn btn-primary !px-7 !py-4 font-display text-lg">
               {getApp.short}
             </a>
           ) : (
-            <span className="btn cursor-default border border-white/15 bg-white/[0.06] !px-7 !py-4 font-display text-lg text-white">
-              Coming soon to the App Store
-            </span>
+            <span className="btn btn-ghost cursor-default !px-7 !py-4 font-display text-lg">Coming soon to the App Store</span>
           )}
         </div>
       </Container>
@@ -169,7 +164,7 @@ export function InlineCta() {
     <div className="mt-14 flex flex-col items-start gap-5 rounded-3xl border border-line bg-surface p-7 sm:flex-row sm:items-center sm:justify-between">
       <div>
         <p className="font-display text-xl font-bold">Try {site.name} free</p>
-        <p className="mt-1 text-muted">Encrypted on your iPhone or iPad. No account required.</p>
+        <p className="mt-1 text-muted">Encrypted on your iPhone. No account required.</p>
       </div>
       <AppStoreButton />
     </div>

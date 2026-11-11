@@ -1,37 +1,35 @@
-import Link from "next/link";
-import { Logo } from "@/components/logo";
-import { MobileNav } from "@/components/mobile-nav";
-import { ThemeToggle } from "@/components/theme-toggle";
-import { getApp, mainNav, site } from "@/lib/site";
+"use client";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { pillNav } from "@/lib/site";
+
+// A floating glass pill, like the app's Liquid Glass bars: the home page and the pages App Store
+// Connect links to. Everything else is in the footer.
 export function Header() {
+  const pathname = usePathname();
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line bg-[var(--header-bg)] backdrop-blur-md">
-      <div className="relative mx-auto flex h-[74px] max-w-6xl items-center justify-between gap-6 px-4 sm:px-6">
-        <Link href="/" aria-label={`${site.name} home`}>
-          <Logo />
-        </Link>
-        <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-7 text-[0.95rem] font-semibold text-muted">
-            {mainNav.map((item) => (
+    <header className="sticky top-0 z-50 flex shrink-0 justify-center px-4 pt-4 pb-2">
+      <nav aria-label="Main" className="glass rounded-full p-1">
+        <ul className="flex items-center text-[0.93rem]">
+          {pillNav.map((item) => {
+            const active = item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            return (
               <li key={item.href}>
-                <Link href={item.href} className="transition hover:text-accent">
+                <Link
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`block rounded-full px-3.5 py-1.5 font-medium transition sm:px-4 ${
+                    active ? "bg-white/12 text-ink" : "text-muted hover:text-ink"
+                  } ${item.href === "/" ? "font-semibold" : ""}`}
+                >
                   {item.label}
                 </Link>
               </li>
-            ))}
-          </ul>
-        </nav>
-        <div className="flex items-center gap-2.5">
-          <ThemeToggle />
-          {getApp && (
-            <a href={getApp.href} className="btn btn-primary hidden !py-2.5 !px-5 text-sm sm:inline-flex">
-              {getApp.short}
-            </a>
-          )}
-          <MobileNav />
-        </div>
-      </div>
+            );
+          })}
+        </ul>
+      </nav>
     </header>
   );
 }

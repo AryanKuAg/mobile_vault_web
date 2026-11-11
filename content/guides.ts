@@ -128,7 +128,7 @@ In a zero-knowledge setup, you buy the lock yourself and never hand over a copy 
 
 ## The trade-off: no "Forgot password?"
 
-If the company can't open your safe, it can't help you open it either. Lose your secret and any backup method, and the data is gone for good. Some zero-knowledge apps hand you a recovery phrase to write down at setup. PrivateRoll doesn't, so your pattern is the only way in.
+If the company can't open your safe, it can't help you open it either. Lose your secret and any backup method, and the data is gone for good. Some zero-knowledge apps hand you a recovery phrase to write down at setup. PrivateRoll does this for every vault, and the phrase only works on the iPhone where the vault was made. Lose both the pattern and the phrase, and the vault is gone for good.
 
 ## How to tell if an app is really zero-knowledge
 
@@ -254,7 +254,7 @@ Install the app, add a test photo, then delete and reinstall the app *without* r
 
 ## A better disguise
 
-If you like the idea, look for an app that offers a [disguised icon](/features/disguised-icons) on top of real encryption, rather than a fake calculator on top of nothing.
+If you like the idea of an app that doesn't stand out, iOS can already hide any app or move it to the App Library. Put your trust in real encryption rather than a fake calculator on top of nothing.
 `,
   },
   {
@@ -284,7 +284,7 @@ Moving between vault apps is the moment your private photos are most exposed: fo
 
 ## If the old app can only export to Photos
 
-Export a batch and import it into PrivateRoll. When it offers to remove the originals, choose **Delete Originals**, then empty **Photos → Recently Deleted**. Keep iCloud Photos paused until you've finished and emptied it.
+Export a batch and import it into PrivateRoll. Once the import has finished, delete the originals in Photos, then empty **Photos → Recently Deleted**. Keep iCloud Photos paused until you've finished and emptied it.
 
 ## Afterwards
 
@@ -326,7 +326,7 @@ You lose the "Places" map in Photos, but your photos no longer record where you 
 
 Location isn't the only metadata. Files can also include the device model, the exact time, and sometimes editing software details. Our [metadata tool](/tools/photo-metadata) shows everything and can export a clean copy.
 
-> Photos taken with PrivateRoll's [Vault Camera](/features/vault-camera) are saved without location. Imported photos keep their original details, so check them with the tool above before you pass them on.
+> Photos you import into PrivateRoll keep their original details, so check them with the tool above before you pass them on.
 `,
   },
   {

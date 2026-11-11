@@ -3,7 +3,7 @@ import { Container } from "@/components/page-parts";
 
 export default function NotFound() {
   return (
-    <section className="relative overflow-hidden pb-28 pt-[160px]">
+    <section className="relative overflow-hidden pb-28 pt-20">
       <div className="hero-glow" />
       <div className="hero-grid" />
       <Container className="relative text-center">

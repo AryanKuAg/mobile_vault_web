@@ -9,17 +9,17 @@ const body = `
 
 By downloading or using ${site.name} you agree to these terms and to Apple's Licensed Application End User License Agreement. If you don't agree, please don't use the app.
 
-## Your pattern is the only key
+## Your pattern and recovery phrase are the only keys
 
-${site.name} is built so that only you can open your vaults. **We can't recover your pattern or your files.** You're responsible for remembering your pattern. We aren't liable for data you can't access because a pattern was forgotten.
+${site.name} is built so that only you can open your vaults. **We can't recover your pattern, your recovery phrase or your files.** You're responsible for remembering your pattern and keeping each vault's recovery phrase safe. Anyone who has your iPhone and a vault's recovery phrase can open that vault, so keep the phrase where other people won't find it. We aren't liable for data you can't access because a pattern and its recovery phrase were both lost.
 
-## Your files live on one device
+## Your files live on one iPhone
 
-Vaults are stored only on the device where you created them. They aren't included in iCloud or computer backups, and they're gone if the device is lost, erased or replaced, or if you delete the app. Keep a copy of anything irreplaceable somewhere else.
+Vaults are stored only on the iPhone where you created them. They aren't included in iCloud or computer backups, and they're gone if the iPhone is lost, erased or replaced, or if you delete the app. Keep a copy of anything irreplaceable somewhere else.
 
-## Destructive features
+## Deleting data
 
-Features such as the duress vault permanently erase data. Use them at your own risk. You're responsible for making sure your use of these features is lawful where you live and travel.
+Delete This Vault and Wipe Everything permanently erase data, and so does deleting the app. These can't be undone, and we have no copy to restore from.
 
 ## Acceptable use
 
@@ -47,5 +47,5 @@ ${site.company} · ${site.supportEmail}
 `;
 
 export default function TermsPage() {
-  return <LegalPage title="Terms of Use" updated="October 23, 2026" body={body} />;
+  return <LegalPage title="Terms of Use" updated="November 11, 2026" body={body} />;
 }

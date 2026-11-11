@@ -50,7 +50,7 @@ export default function AboutPage() {
               Phones have become the place we keep everything: IDs, medical records, photos of our kids, things from past relationships, screenshots we might need one day. Yet the people most likely to see those things aren&apos;t hackers. They&apos;re people who already have our phone in their hands.
             </p>
             <p>
-              Most &quot;hidden&quot; folders open with the same passcode as the phone. Many vault apps can reset your PIN by email, which means someone other than you can get in. We wanted something different: a vault whose only key is in your head.
+              Most &quot;hidden&quot; folders open with the same passcode as the phone. Many vault apps can reset your PIN by email, which means someone other than you can get in. We wanted something different: a vault whose only keys are the pattern in your head and a recovery phrase only you have seen.
             </p>
             <h2>How we build</h2>
             <p>
