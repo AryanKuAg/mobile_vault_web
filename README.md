@@ -51,5 +51,7 @@ write and check the post, and how to publish it.
   prints what to improve or write next. It reads only Google's data, so the site itself still runs
   no analytics.
 - `npm run seo:ping <urls>` tells Bing and the other IndexNow engines about new pages. The key is
-  the file in `public/` named after itself.
+  the file in `public/` named after itself. You rarely need it by hand: after every deploy of
+  `main`, `.github/workflows/indexnow.yml` sends each page in the sitemap that's new or whose
+  lastmod moved, whether a post came from the daily run or from you.
 - `npm run seo:suggest "<phrase>"` shows Google's autocomplete for a phrase.

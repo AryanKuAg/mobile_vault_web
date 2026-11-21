@@ -1,0 +1,49 @@
+# When Vercel finishes deploying main, tell Bing and the other IndexNow engines
+# which pages are new or changed, so a new post is crawled within hours.
+#
+# Vercel marks each commit it deploys with a "Vercel" status; that's the trigger,
+# so this runs once the deploy is live, not when the push lands. The list of pages
+# sent last time is kept in the Actions cache: a page goes out again only when it's
+# new or its lastmod moved. If the cache has expired (a week without deploys), the
+# whole sitemap goes out once, which is harmless.
+name: IndexNow
+
+on: status
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    if: >-
+      github.event.state == 'success' &&
+      startsWith(github.event.context, 'Vercel') &&
+      contains(github.event.branches.*.name, 'main')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: actions/cache/restore@v4
+        with:
+          path: .indexnow.json
+          key: indexnow-${{ github.run_id }}
+          restore-keys: indexnow-
+
+      # The status lands as the new deploy takes over the domain; give the edge a moment.
+      - run: sleep 30
+
+      - run: node scripts/seo/indexnow.mjs --changed .indexnow.json
+
+      - uses: actions/cache/save@v4
+        with:
+          path: .indexnow.json
+          key: indexnow-${{ github.run_id }}

@@ -119,7 +119,7 @@ On a DRY RUN, push to `claude/blog-<date>` and open a pull request instead.
 A push to `main` deploys on Vercel in a minute or two.
 
 1. Check `https://privateroll.app/blog/<slug>` every 60 seconds until it returns 200, for up to 20 minutes.
-2. Tell Bing and the other IndexNow engines: `npm run seo:ping <new URL> <refreshed URL>`.
+2. No ping needed: once the deploy is live, `.github/workflows/indexnow.yml` tells Bing and the other IndexNow engines about every page that's new or whose lastmod moved.
 
 Google needs no ping: it reads the sitemap, whose lastmod moved. If the page never goes live, say so in the report.
 
@@ -130,6 +130,5 @@ End with a few lines:
 - what went out, and why (the query, its impressions and position, or the backlog item)
 - what the checks said
 - the live URL
-- what IndexNow answered
 
 On Mondays, add the report's 28-day clicks and impressions next to the 28 days before.

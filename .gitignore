@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Search Console report, rebuilt on every run (npm run seo:report)
 /seo/report.json
+
+# What the IndexNow workflow sent last (npm run seo:ping -- --changed)
+/.indexnow.json
