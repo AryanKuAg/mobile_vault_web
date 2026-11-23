@@ -23,6 +23,10 @@ export const metadata: Metadata = {
     description: site.description,
   },
   twitter: { card: "summary_large_image" },
+  verification: {
+    // Pinterest's site claim.
+    other: { "p:domain_verify": "75d0644159d35a96ead3c2d78a928cc1" },
+  },
 };
 
 export const viewport: Viewport = {
