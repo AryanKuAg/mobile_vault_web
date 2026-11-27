@@ -15,17 +15,17 @@ ${site.name} is built so that only you can open your vaults. **We can't recover 
 
 ## Where your files are
 
-Vaults are stored on the iPhone where you made them, and they aren't included in iCloud or computer backups of the iPhone. Without Encrypted Backup, they're gone if the iPhone is lost, erased or replaced, or if you delete the app. With Encrypted Backup (${site.name} 2.0 and later, part of ${site.name} Pro), an encrypted copy of a vault is kept in your iCloud, and you can restore it with the vault's recovery phrase. Keep a copy of anything irreplaceable somewhere else too.
+Vaults are stored on the iPhone where you made them, and they aren't included in iCloud or computer backups of the iPhone. Without Encrypted Backup, they're gone if the iPhone is lost, erased or replaced, or if you delete the app. With Encrypted Backup (${site.name} 2.0 and later, free), an encrypted copy of a vault is kept in your iCloud, and you can restore it with the vault's recovery phrase. Keep a copy of anything irreplaceable somewhere else too.
 
 ## ${site.name} Pro
 
-${site.name} is free to download. ${site.name} Pro, from version 2.0, is optional. It unlocks unlimited photos, videos and vaults, Encrypted Backup, vault sharing, the panic vault, disguised app icons and slideshow. The free plan holds up to 100 photos, 10 videos and 3 vaults; files and notes have no limit.
+${site.name} is free to download. ${site.name} Pro, from version 2.0, is optional. It unlocks unlimited photos, videos and vaults, vault sharing, the panic vault, disguised app icons and slideshow. Encrypted Backup is free for everyone. The free plan holds up to 100 photos, 10 videos and 3 vaults; files and notes have no limit.
 
 - **Plans.** Pro is sold as a weekly or a yearly auto-renewing subscription, or as a one-time lifetime purchase. The app shows each plan's price and length before you buy. The yearly plan may start with a free trial if you haven't had one.
 - **Payment and renewal.** Payment is charged to your Apple Account when you confirm the purchase. A subscription renews automatically, at the same price and for the same length, unless you cancel it at least 24 hours before the current period ends. Your account is charged for the renewal within the 24 hours before the period ends. If you buy a subscription during a free trial, the rest of the trial ends.
 - **Cancelling.** Manage or cancel subscriptions in iPhone Settings › your name › Subscriptions. Cancelling stops the next renewal, and Pro stays on until the end of the period you've paid for.
 - **Refunds.** Apple handles payments and refunds. To ask for a refund, visit [reportaproblem.apple.com](https://reportaproblem.apple.com).
-- **When Pro ends.** You keep everything you've added, but adding photos, videos or vaults beyond the free plan's limits needs Pro again. Backups stop, and you can still restore and delete them. Things you set up while you had Pro, such as your app icon, a panic vault and earlier shares, keep working.
+- **When Pro ends.** You keep everything you've added, but adding photos, videos or vaults beyond the free plan's limits needs Pro again. Things you set up while you had Pro, such as your app icon, a panic vault and earlier shares, keep working, and so do your backups.
 - **Restoring purchases.** On another iPhone with the same Apple Account, tap Restore on the ${site.name} Pro screen.
 
 ## Shared vaults

@@ -20,7 +20,7 @@ const help = [
   },
   {
     q: "How do I move to a new iPhone?",
-    a: `From ${site.name} 2.0, turn on Encrypted Backup for each vault (the gear inside the vault, then Encrypted Backup; part of ${site.name} Pro). On the new iPhone, sign in to the same iCloud account, install ${site.name}, tap "Use recovery phrase" on the lock screen and type the vault's phrase. The vault downloads from your iCloud, and you choose a new pattern. Without a backup, vaults stay on the iPhone they were made on: open each one, share what you want to keep to Files or a computer, then import it on the new iPhone.`,
+    a: `From ${site.name} 2.0, turn on Encrypted Backup for each vault (the gear inside the vault, then Encrypted Backup; it's free). On the new iPhone, sign in to the same iCloud account, install ${site.name}, tap "Use recovery phrase" on the lock screen and type the vault's phrase. The vault downloads from your iCloud, and you choose a new pattern. Without a backup, vaults stay on the iPhone they were made on: open each one, share what you want to keep to Files or a computer, then import it on the new iPhone.`,
   },
   {
     q: "Can I have more than one vault?",
@@ -32,7 +32,7 @@ const help = [
   },
   {
     q: `What is ${site.name} Pro?`,
-    a: `${site.name} Pro, from version 2.0, adds unlimited photos, videos and vaults, Encrypted Backup, vault sharing, the panic vault, disguised app icons and slideshow. Choose weekly or yearly (with a free week if you haven't had one), or buy it once for life. The free plan holds up to 100 photos, 10 videos and 3 vaults; files and notes have no limit.`,
+    a: `${site.name} Pro, from version 2.0, adds unlimited photos, videos and vaults, vault sharing, the panic vault, disguised app icons and slideshow. Encrypted Backup is free for everyone. Choose weekly or yearly (with a free week if you haven't had one), or buy it once for life. The free plan holds up to 100 photos, 10 videos and 3 vaults; files and notes have no limit.`,
   },
   {
     q: "How do I cancel my subscription, or get a refund?",
@@ -44,7 +44,7 @@ const help = [
   },
   {
     q: "What happens when Pro ends?",
-    a: "You keep everything you've added. Adding more than 100 photos, 10 videos or 3 vaults needs Pro again, and backups stop, but you can still restore and delete them. Your app icon, a panic vault and earlier shares keep working.",
+    a: "You keep everything you've added. Adding more than 100 photos, 10 videos or 3 vaults needs Pro again. Your app icon, a panic vault, earlier shares and your backups keep working.",
   },
   {
     q: "How does vault sharing work?",
